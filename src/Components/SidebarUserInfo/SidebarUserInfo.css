@@ -1,0 +1,58 @@
+.sideBarUserContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 12.5%;
+    width: 100%;
+    margin: 2.5em 2em 0;
+}
+
+.userInfoImage {
+    background-color: #212121;
+    height: 100%;
+    width: auto;
+}
+
+.userInfoContainer {
+    display: flex;
+    flex-direction: column;
+    font-family: "Fira Sans";
+    color: white;
+    align-self: flex-start;
+    text-align: left;
+    margin-left: 6%;
+}
+
+.userInfoUsername {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.gamesWonText {
+    font-size: 0.8em;
+    margin-top: 0;
+    
+}
+
+@media screen and (max-width: 1000px) {
+    .sideBarUserContainer {
+      height: 15%;
+      width: 100%;
+      margin: 2em 1em 0;
+    }
+
+    .userInfoUsername {
+        font-size: 1.2em;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .gamesWonText {
+        font-size: 0.8em;
+        margin-top: 0;
+    }
+
+
+}
+  

@@ -1,24 +1,40 @@
 import React from 'react'
 import { slide as Menu } from 'react-burger-menu'
+import SidebarUserInfo from '../../Components/SidebarUserInfo/SidebarUserInfo';
 import './SideBar.css'
 
-export default class extends React.Component {
-  showSettings (event) {
-    event.preventDefault();
+import windowSize from 'react-window-size';
+import SidebarChoices from '../../Components/SidebarChoices/SidebarChoices';
 
-  }
+import SidebarChat from '../SidebarChat/SidebarChat';
+
+export default windowSize(
+  class extends React.Component {
+    
+    state = {
+      currentSidebarOption: "chat"
+    }
+
+    showSettings (event) {
+      event.preventDefault();
+
+    }
+      
+    setSidebarOption = (sidebarOption) => {
+      this.setState({currentSidebarOption: sidebarOption})
+    }
+
     
 
-  
-
-  render () {
-    return (
-      <Menu right customBurgerIcon={ <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Random-image.jpg" />}  isOpen={this.props.sidebarIsOpen} noOverlay> 
-        <a id="home" className="menu-item" href="/">Home</a>
-        <a id="about" className="menu-item" href="/about">About</a>
-        <a id="contact" className="menu-item" href="/contact">Contact</a>
-        <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
-      </Menu>
-    );
-  }
-}
+    render () {
+      const menuWidth = this.props.windowWidth < this.props.windowHeight || this.props.windowWidth < 1024 ? '90%' : '20%';
+      return (
+        <Menu right width={menuWidth} isOpen={this.props.sidebarIsOpen} noOverlay > 
+          <SidebarUserInfo User = {'test'} GamesWon = {'test'} />
+          <SidebarChoices currentSidebarOption = {this.state.currentSidebarOption} setSidebarOption = {this.setSidebarOption} />
+          {this.state.currentSidebarOption === "chat" ? <SidebarChat /> : <div></div>}
+        </Menu>
+      );
+    }
+  } 
+)

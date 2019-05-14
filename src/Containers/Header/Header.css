@@ -18,7 +18,12 @@
 }
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1000px) {
+    .headerContainer {
+        height: 15%
+    }
+
+    
     .logo{
         height: 70%
     }

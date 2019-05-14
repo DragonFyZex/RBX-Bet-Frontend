@@ -1,0 +1,32 @@
+.choicesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5%;
+    width: 70%;
+    margin: 0.5em 2em 1.5em 1.7em;
+    font-family: "Basic";
+    font-size: 1.2em;
+    color: white
+}
+
+.choicesContainer > p {
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; 
+}
+
+@media screen and (max-width: 700px) {
+    .choicesContainer {
+        margin: 2em 1em 0;
+        font-size: 0.8em;
+    }
+
+
+}
+  
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    .choicesContainer { width: 40%; font-size: 1em; }
+}
+  

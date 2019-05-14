@@ -1,0 +1,56 @@
+.sidebarSendContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: #1C2226;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+
+    
+    
+    color: white;
+    padding: 0.5em 1.75em 0 1.75em
+}
+
+.sidebarSendContainer > input {
+    flex-grow: 2;
+    outline: none;
+    background: none;
+    border: none;
+    font-family: "Fira Sans";
+    color: white;
+    margin-left: 2%
+}
+
+
+.sidebarSendContainer > input::placeholder { color: white; }
+.sidebarSendContainer > input:-moz-placeholder { color: white; opacity: 1 }
+.sidebarSendContainer > input::-moz-placeholder { color: white; opacity: 1 }
+
+.sidebarSendContainer > p {
+    font-family: "Basic";
+    color: #FFE978;
+    font-size: 0.8em;
+    cursor: pointer;
+    user-select: none;
+    
+    
+}
+
+@media screen and (max-width: 700px) {
+    .sidebarSendContainer {
+        padding: 0.5em 1.75em 0 0.7em;
+        font-size: 0.8em;
+
+    }
+    
+    .sidebarSendContainer > input {
+        margin-left: 1%
+    }
+
+    .sidebarSendContainer > p {
+        margin: 1em 0em 1em 0;
+
+    }
+
+  }
+  

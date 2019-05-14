@@ -1,0 +1,36 @@
+.sidebarActionsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #1C2226;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    font-family: "Basic";
+    font-size: 1.2em;
+    color: white;
+}
+
+.sidebarActionsContainer > p {
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; 
+    margin: 0.5em 0em 0.5em 1.75em;
+}
+
+.sidebarActionsContainer > p:hover {
+    color: #3ACAD3
+}
+
+@media screen and (max-width: 700px) {
+    .sidebarActionsContainer {
+        margin: 2em 0em 0;
+        font-size: 0.8em;
+
+    }
+
+    .sidebarActionsContainer > p {
+        margin: 1em 0em 1em 1em;
+    }
+
+  }
+  
