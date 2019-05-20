@@ -1,0 +1,78 @@
+.jackpotGameInfoContainer {
+    background-color: #0477A9;
+    min-height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.jackpotGameCountdownItems {
+    background-color: #005585;
+    border-radius: 2px;
+    min-width: 77%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jackpotGameCountdownFiller {
+
+    background-color: #EEC907;
+    border-radius: 2px;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+    width: 40%;
+    height: 100%;
+    margin-right: auto;
+}
+
+/* We can have this seperate, no more fillter */
+
+.jackpotGameCountdownFillerInfoContainer {
+    position: absolute;
+    
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+
+    font-family: Basic;
+    color: #FFFFFF;
+
+
+}
+
+.jackpotGameCountdownFillerInfoBig {
+    font-size: 3.5vh;
+    margin: 0;
+}
+
+.jackpotGameCountdownFillerInfoSmall {
+    font-size: 2vh;
+    margin: 0;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .jackpotGameInfoContainer {
+        min-height: 50%
+    }
+
+    .jackpotGameCountdownFiller {
+        background-color: green;
+    }
+
+    .jackpotGameCountdownItems {
+        min-width: 65%;
+    }
+
+    .jackpotGameCountdownFillerInfoContainer {
+        color: lightgreen
+    }
+    
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+
+}

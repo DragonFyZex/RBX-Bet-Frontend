@@ -1,5 +1,5 @@
 .chatLogContainer {
     flex: 1;
     background-color: red;
-    display: none;
+    /* display: none; */
 }

@@ -2,6 +2,6 @@
     width: 100%;
     margin: 0.5em 0em 0 0em;
     display: flex;
+    height: 90%;
     flex-direction: column;
-    justify-content: space-between
 }
