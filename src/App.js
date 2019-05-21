@@ -7,7 +7,7 @@ import Main from './Containers/Main/Main'
 
 export default class App extends React.Component {
   state = {
-    sidebarIsOpen: true
+    sidebarIsOpen: false
   }
   
   setSidebarIsOpen = (sidebarIsOpen) => {
