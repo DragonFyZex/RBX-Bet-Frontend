@@ -10,6 +10,7 @@ export default () => {
             <div className = "infoContainer">
 
             </div>
+            
         </div>
     )
 }

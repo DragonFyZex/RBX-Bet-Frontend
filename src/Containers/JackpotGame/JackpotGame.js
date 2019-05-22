@@ -5,6 +5,7 @@ import JackpotProgressBar from '../../Components/JackpotProgressBar/JackpotProgr
 import Banner from '../../Assets/images/Banner'
 import Chevron from '../../Assets/images/Chevron'
 import windowSize from 'react-window-size'
+import JackpotItem from '../../Components/JackpotItem/JackpotItem';
 
 const JackpotGame = ({windowWidth, windowHeight}) => {
 
@@ -65,8 +66,9 @@ const JackpotGame = ({windowWidth, windowHeight}) => {
 
             </div>
             <div className = "jackpotItemsContainer">
-
+                <JackpotItem />
             </div>
+            
             <div className = "jackpotRoundInfoContainer">
                 <p style = {{color: 'white', fontFamily: "Fira Sans", fontWeight: 600, fontSize: windowWidth < 1024 ? '2vh' : '3vh', marginTop: windowWidth < 1024 ? '5%' : '1%', marginBottom: 0 }}>THE GAME HAS BEGUN! MAKE YOUR DEPOSITS!</p>
                 <div style = {{display: 'flex', flexDirection: windowWidth < 1024 ? 'column' : 'row', justifyContent: 'center', width: '100%', marginTop: 0 }}>
