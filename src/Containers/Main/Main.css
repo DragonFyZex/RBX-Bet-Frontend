@@ -4,7 +4,11 @@
     /* border: 3px solid green; */
     height: 87%;
     margin-top: 2%;
-    margin-left: 2%;
+
+    /* turn on margin and off center for left align */
+    /* margin-left: 2%; */
+    align-self: center;
+    
     /* position: absolute; */
     display: flex;
     flex-direction: row;

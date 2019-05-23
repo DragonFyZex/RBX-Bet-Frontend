@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './JackpotParticipants.css'
+import Participant from '../../Components/Participant/Participant';
 
 export default ({participants}) => {
 
@@ -10,7 +11,9 @@ export default ({participants}) => {
                 PARTICIPANTS
             </div>
            
-            <div className = "jackpotParticipantsList"></div>
+            <div className = "jackpotParticipantsList">
+                <Participant />
+            </div>
 
             <div className = "jackpotParticipantsBot" />
         </div>
