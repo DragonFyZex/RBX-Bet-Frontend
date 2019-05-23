@@ -6,7 +6,6 @@ import JackpotHistory from '../JackpotHistory/JackpotHistory';
 
 export default () => {
     const [screen, changeScreen] = useState("jackpot");
-    console.log(screen)
     return (
         <div className = "jackpotContainer">
             <div className="screen">

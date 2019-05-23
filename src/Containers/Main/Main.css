@@ -3,12 +3,12 @@
     width: 80%;
     /* border: 3px solid green; */
     height: 87%;
-    margin-top: 2%;
+    margin-top: 1%;
 
     /* turn on margin and off center for left align */
     /* margin-left: 2%; */
     align-self: center;
-    
+
     /* position: absolute; */
     display: flex;
     flex-direction: row;
@@ -23,7 +23,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin-left: 1%;
+    margin-left: 1.5%;
     justify-content: space-between;
 }
 

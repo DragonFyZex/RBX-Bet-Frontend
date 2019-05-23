@@ -5,6 +5,7 @@ import Header from './Containers/Header/Header';
 import SideBar from './Containers/SideBar/SideBar';
 import Main from './Containers/Main/Main'
 
+
 export default class App extends React.Component {
   state = {
     sidebarIsOpen: false

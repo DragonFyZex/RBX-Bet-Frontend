@@ -1,40 +1,44 @@
 .participantContainer {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    height: 50%;
+    justify-content: space-between;
+    min-height: 6vh;
+    height: 6vh;
     width: 100%;
-    background-color: red;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 0;
+    
 }
 
 .userInfoImage {
     background-color: #212121;
     height: 100%;
     width: auto;
+
 }
 
-.userInfoContainer {
-    display: flex;
-    flex-direction: column;
-    font-family: "Fira Sans";
-    color: white;
-    align-self: flex-start;
-    text-align: left;
-    margin-left: 6%;
-}
 
-.userInfoUsername {
-    font-size: 1.2em;
+.participantUsername {
+    font-size: 1rem;
     margin-top: 0;
     margin-bottom: 0;
+    font-family: "Basic";
+    font-style: normal;
+    color: white;
+    margin-right: auto;
+    margin-left: 0.5vw;
 }
 
-.gamesWonText {
-    font-size: 0.8em;
+.participantPercentage {
+    font-size: 1.6em;
     margin-top: 0;
-    
+    margin-bottom: 0;
+    font-family: "Fira Sans";
+    font-style: normal;
+    font-weight: 600;
+    color: white;
+    margin-right: 5%;
+    margin-left: 0;
 }
 
 @media screen and (max-width: 1000px) {
