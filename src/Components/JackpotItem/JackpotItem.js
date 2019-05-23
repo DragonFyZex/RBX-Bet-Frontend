@@ -5,9 +5,6 @@ import windowSize from 'react-window-size'
 import './JackpotItem.css'
 
 export default windowSize(({ID = 48545806, Price="2000000", windowWidth, windowHeight}) => {
-    // smartcrop.crop("https://www.roblox.com/Thumbs/Asset.ashx?format=png&width=420&height=230&assetId=48545806", { width: 100, height: 100 }).then(console.log)
-    // console.log(image)
-    console.log(windowWidth)
     return (
         <div className = "jackpotItem" style = {{color: "red"}}>
             <div style = 

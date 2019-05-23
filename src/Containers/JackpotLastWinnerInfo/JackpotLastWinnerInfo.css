@@ -1,0 +1,81 @@
+.lastWinnerContainer{
+
+    min-width: 75%;
+
+    background-color: #1C2226;
+    border-radius: 25px;
+    min-height: 41%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.jackpotLastWinnerUserContainer {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 57%;
+    width: 40%;
+    margin-top: 2%;
+}
+
+
+.jackpotLastWinnerUserCircle {
+    border: 5px solid #0477A9;
+    height: 95%;
+    width: 80%;
+    border-radius: 300px;
+    margin-bottom: 5%;
+    overflow: hidden;
+}
+
+.jackpotLastWinnerUserBackground {
+    background: rgba(22, 21, 21, 0.88);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+}
+
+.jackpotLastWinnerName {
+    font-family: "Fira Sans";
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+    margin-top: 0.5rem;
+}
+
+.jackpotLastWinnerTop {
+    background: #0F161B;
+    border-radius: 24px 24px 0px 0px;
+    min-height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    font-family: "Fira Sans";
+    font-size: 2rem;
+    user-select: none;
+}
+
+.jackpotLastWinnerBot {
+    background: #0F161B;
+    border-radius: 0px 0px 24px 24px;
+    min-height: 20%;
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    font-family: "Fira Sans";
+    font-size: 1rem;
+    user-select: none;
+}

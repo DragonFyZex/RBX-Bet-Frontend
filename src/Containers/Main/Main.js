@@ -2,6 +2,8 @@ import React from 'react'
 
 import './Main.css'
 import Jackpot from '../Jackpot/Jackpot'
+import JackpotLastWinnerInfo from '../JackpotLastWinnerInfo/JackpotLastWinnerInfo';
+import JackpotParticipants from '../JackpotParticipants/JackpotParticipants';
 
 export default () => {
     return (
@@ -9,7 +11,8 @@ export default () => {
             <div className = "mainContainer">
                 <Jackpot />
                 <div className = "infoContainer">
-
+                    <JackpotLastWinnerInfo />
+                    <JackpotParticipants />
                 </div>
                 
             </div>

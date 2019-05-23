@@ -20,7 +20,7 @@ export default class App extends React.Component {
       <div className="App">
         <Header sidebarIsOpen = {this.state.sidebarIsOpen} setSidebarIsOpen = {this.setSidebarIsOpen}/>
         <Main />
-        <SideBar sidebarIsOpen = {this.state.sidebarIsOpen} />
+        {/* <SideBar sidebarIsOpen = {true} /> */}
       </div>
     );
   }
