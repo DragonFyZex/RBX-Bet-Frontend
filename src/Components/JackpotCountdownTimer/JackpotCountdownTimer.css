@@ -1,0 +1,35 @@
+
+.jackpotGameCountdownContainer {
+    height: 100%;
+    width: 20%;
+    margin-left: 1%;
+    display: flex;
+    justify-content: space-between
+
+}
+
+.countdownTimeContainer {
+    height: 100%;
+    width: 42%;
+    background: #005585;
+    border-radius: 2px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Fira Sans";
+    font-size: 5vh;
+    color: white
+}
+
+
+@media screen and (max-width: 1000px) {
+    
+
+    .jackpotGameCountdownContainer { width: 35% }
+    .countdownTimeContainer { font-size: 4vh; }
+
+  
+
+}
+

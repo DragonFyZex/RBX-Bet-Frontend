@@ -19,29 +19,6 @@
     text-align: center;
 }
 
-.jackpotGameCountdownContainer {
-    height: 100%;
-    width: 20%;
-    margin-left: 1%;
-    display: flex;
-    justify-content: space-between
-
-}
-
-.countdownTimeContainer {
-    height: 100%;
-    width: 42%;
-    background: #005585;
-    border-radius: 2px;
-    align-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Fira Sans";
-    font-size: 5vh;
-    color: white
-}
-
 .jackpotDepositContainer {
     background-color: #C4C4C4;
     min-height: 17%;
@@ -99,8 +76,6 @@
     .jackpotContainer { border-radius: 30px; }
 
     .jackpotGameCountdown { margin: 0 10%; }
-    .jackpotGameCountdownContainer { width: 35% }
-    .countdownTimeContainer { font-size: 4vh; }
 
     .jackpotDepositContainer { flex-direction: column; min-height: 33% }
     .jackpotDepositInfo { margin-top: 5%; }

@@ -6,31 +6,23 @@ import Banner from '../../Assets/images/Banner'
 import Chevron from '../../Assets/images/Chevron'
 import windowSize from 'react-window-size'
 import JackpotItem from '../../Components/JackpotItem/JackpotItem';
+import JackpotCountdownTimer from '../../Components/JackpotCountdownTimer/JackpotCountdownTimer';
 
-const JackpotGame = ({windowWidth, windowHeight}) => {
+const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
+    const timeEnd = roundInfo.timeStarted + 300 
+    console.log(roundInfo)
 
     return (
 
         <div className = "jackpotGameContainer">
             <div className = "jackpotGameInfoContainer">
-                <p style={{fontFamily: "Basic", fontSize: "1em", alignSelf: "flex-start", marginLeft: "2.2em", color: "white"}}>Game #TEST</p>
+                <p style={{fontFamily: "Basic", fontSize: "1em", alignSelf: "flex-start", marginLeft: "2.2em", color: "white"}}>Game #{roundInfo != undefined ? roundInfo.round : "Loading"}</p>
                 <div className = "jackpotGameCountdown">
-                    <JackpotProgressBar />
+                    <JackpotProgressBar numItems = {roundInfo.roundInfo.length}/>
                     <div style={{lineHeight: "100%", display: 'flex', flexDirection: 'column', justifyContent: "center", marginLeft: "1%"}}>
                         <p style={{fontFamily: "Basic", color: "white", fontSize: "2vh"}}>or</p>
                     </div>
-                    <div className = "jackpotGameCountdownContainer">
-                        <div className = "countdownTimeContainer">
-                            <p style={{marginTop: "3%", marginBottom: "3%"}}>00</p>
-                        </div>
-                        
-                        <div style={{height: "100%", display: 'flex', flexDirection: 'column', justifyContent: "center", marginLeft: "1%"}}>
-                            <p style={{fontFamily: "Basic", color: "white", fontSize: "2vh"}}>:</p>
-                        </div>
-                        <div className = "countdownTimeContainer">
-                        <p style={{marginTop: "3%", marginBottom: "3%"}}>35</p>
-                        </div>
-                    </div>
+                    <JackpotCountdownTimer timeEnd = {roundInfo.timeStarted == -1 ? -1 : timeEnd}/>
 
 
                 </div>
@@ -39,7 +31,7 @@ const JackpotGame = ({windowWidth, windowHeight}) => {
                         <p style = {{color: "#FAD450", fontFamily: "Fira Sans", margin: 0, fontSize: windowWidth <= 1024 ? '2.5vh' : '4vh', fontWeight: "600"}}>AT STAKE: </p> 
                         <p style = {{ color: "#FAD450", fontFamily: "Basic", margin: 0, fontSize: windowWidth <= 1024 ? '2.5vh' : '4vh', 
                                       marginBottom: windowWidth <= 1024 && (windowWidth / windowHeight > 0.75) ? '0px' : '1%', marginLeft: "2%", color: "white"}}>
-                                          R$ 1378
+                                          R$ {roundInfo.numberOfTickets}
                                     </p> 
                     </div>
                 </Banner>
@@ -66,19 +58,23 @@ const JackpotGame = ({windowWidth, windowHeight}) => {
 
             </div>
             <div className = "jackpotItemsContainer">
-                <JackpotItem />
+                {
+                    roundInfo.roundInfo.map(item => <JackpotItem id = {item.limited.AssetID} price = {item.limitedValue} key = {item.startingTicket}/>)
+                }
             </div>
             
             <div className = "jackpotRoundInfoContainer">
                 <p style = {{color: 'white', fontFamily: "Fira Sans", fontWeight: 600, fontSize: windowWidth < 1024 ? '2vh' : '3vh', marginTop: windowWidth < 1024 ? '5%' : '1%', marginBottom: 0 }}>THE GAME HAS BEGUN! MAKE YOUR DEPOSITS!</p>
                 <div style = {{display: 'flex', flexDirection: windowWidth < 1024 ? 'column' : 'row', justifyContent: 'center', width: '100%', marginTop: 0 }}>
                     <p style = {{background: "#368C0E", borderRadius: 2, fontFamily: "Fira Sans", color: 'white', padding: '1px 1%', fontSize: '1.2vh', maxWidth: '40%', alignSelf: windowWidth < 1024 ? "center" : 'flex-start', marginBottom: '0', marginTop: 0}}>PROVABLY FAIR</p>
-                    <p style = {{fontFamily: "Fira Sans", color: 'white', alignSelf: 'center', fontSize: '1.2vh', marginLeft: '1%', marginTop: windowWidth < 1024 ? "2%" : '0'}}>Round Hash SHA 224: 7ec90198d35c71b17724c4080640316a5cca7ee100cc2e58a23d06ac</p>
+                    <p style = {{fontFamily: "Fira Sans", color: 'white', alignSelf: 'center', fontSize: '1.2vh', marginLeft: '1%', marginTop: windowWidth < 1024 ? "2%" : '0'}}>Round Hash SHA 224: {roundInfo.hash}</p>
                 </div>
             </div>
             
         </div>
     )
 }
+
+
 
 export default windowSize(JackpotGame)
