@@ -16,9 +16,8 @@ export default class extends React.Component {
     componentDidMount = () => {
         const socket = io('http://localhost:5000');
         socket.on("getRound", data => this.setState({response: data}));
-
+        
     }
-
 
 
     render() {
@@ -27,8 +26,8 @@ export default class extends React.Component {
                 <div className = "mainContainer">
                     <Jackpot data = {this.state.response}/>
                     <div className = "infoContainer">
-                        <JackpotLastWinnerInfo />
-                        <JackpotParticipants />
+                        <JackpotLastWinnerInfo lastRound = {this.state.response ? this.state.response.lastRoundInfo : {}} />
+                        <JackpotParticipants data = {this.state.response}/>
                     </div>
                     
                 </div>

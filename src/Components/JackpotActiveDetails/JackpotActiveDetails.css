@@ -1,0 +1,61 @@
+
+.jackpotActiveContainer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1%;
+    width: 50%;
+    margin-bottom: 1%;
+}
+
+.jackpotActiveWinningContainer {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    height: 37.5%;
+    width: 50%;
+
+}
+
+.jackpotActiveWinningLabel {
+    font-family: "Basic";
+    font-size: 1em;
+    line-height: 0%;
+    margin: 0%;
+}
+
+.jackpotActiveWinningTicket {
+    font-family: "Basic";
+    font-size: 1em;
+    margin-left: 2%;
+    color: white;
+}
+
+.jackpotActiveWinner {
+    font-family: "Basic";
+    font-size: 1em;
+    margin-left: 2%;
+    color: #FCFF58;
+}
+
+.jackpotActiveValueContainer {
+    height: 50%;
+
+    width: 25%;
+    background-color: #0A1518;;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jackpotActiveValueContainer {
+    font-family: "Basic";
+    font-size: 1em;
+    line-height: 0%;
+    margin: 0%;
+    color: white;
+}

@@ -1,0 +1,24 @@
+.jackpotPlayers {
+    height: 5em;
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.jackpotPlayersList {
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    transform: translate3d(-11600px, 0px, 0px);
+    transition: all 16000ms cubic-bezier(.53,.89,.58,1) -3870ms;
+}
+
+
+.jackpotUserImage {
+    height: 100%;
+    width: auto;
+    margin-right: 1%;
+    background-color: #212121;
+    user-select: none;
+}

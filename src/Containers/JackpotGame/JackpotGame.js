@@ -7,34 +7,47 @@ import Chevron from '../../Assets/images/Chevron'
 import windowSize from 'react-window-size'
 import JackpotItem from '../../Components/JackpotItem/JackpotItem';
 import JackpotCountdownTimer from '../../Components/JackpotCountdownTimer/JackpotCountdownTimer';
+import JackpotRoulettePicker from '../../Components/JackpotRoulettePicker/JackpotRoulettePicker';
+import JackpotActiveDetails from '../../Components/JackpotActiveDetails/JackpotActiveDetails';
 
 const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
     const timeEnd = roundInfo.timeStarted + 300 
-    console.log(roundInfo)
 
     return (
 
         <div className = "jackpotGameContainer">
             <div className = "jackpotGameInfoContainer">
                 <p style={{fontFamily: "Basic", fontSize: "1em", alignSelf: "flex-start", marginLeft: "2.2em", color: "white"}}>Game #{roundInfo != undefined ? roundInfo.round : "Loading"}</p>
-                <div className = "jackpotGameCountdown">
-                    <JackpotProgressBar numItems = {roundInfo.roundInfo.length}/>
-                    <div style={{lineHeight: "100%", display: 'flex', flexDirection: 'column', justifyContent: "center", marginLeft: "1%"}}>
-                        <p style={{fontFamily: "Basic", color: "white", fontSize: "2vh"}}>or</p>
-                    </div>
-                    <JackpotCountdownTimer timeEnd = {roundInfo.timeStarted == -1 ? -1 : timeEnd}/>
+                
+                { roundInfo.completed === 1 ?
+                    <div>
+                        <div className = {"jackpotGameCountdown"}>
+                        
+                                <JackpotProgressBar numItems = {roundInfo.roundInfo.length}/>
+                                    <div style={{lineHeight: "100%", display: 'flex', flexDirection: 'column', justifyContent: "center", marginLeft: "1%"}}>
+                                        <p style={{fontFamily: "Basic", color: "white", fontSize: "2vh"}}>or</p>
+                                    </div>
+                                <JackpotCountdownTimer timeEnd = {roundInfo.timeStarted == -1 ? -1 : timeEnd}/>
+                        </div>
 
-
-                </div>
-                <Banner> 
-                    <div style = {{position: "absolute", display: "inline-flex", alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minWidth: windowWidth < 1000 ? '50%' : '40%'}}>
-                        <p style = {{color: "#FAD450", fontFamily: "Fira Sans", margin: 0, fontSize: windowWidth <= 1024 ? '2.5vh' : '4vh', fontWeight: "600"}}>AT STAKE: </p> 
-                        <p style = {{ color: "#FAD450", fontFamily: "Basic", margin: 0, fontSize: windowWidth <= 1024 ? '2.5vh' : '4vh', 
-                                      marginBottom: windowWidth <= 1024 && (windowWidth / windowHeight > 0.75) ? '0px' : '1%', marginLeft: "2%", color: "white"}}>
-                                          R$ {roundInfo.numberOfTickets}
-                                    </p> 
+                        <Banner> 
+                        <div style = {{position: "absolute", display: "inline-flex", alignSelf: 'center', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', minWidth: windowWidth < 1000 ? '50%' : '40%'}}>
+                            <p style = {{color: "#FAD450", fontFamily: "Fira Sans", margin: 0, fontSize: windowWidth <= 1024 ? '2.5vh' : '4vh', fontWeight: "600"}}>AT STAKE: </p> 
+                            <p style = {{ color: "#FAD450", fontFamily: "Basic", margin: 0, fontSize: windowWidth <= 1024 ? '2.5vh' : '4vh', 
+                                        marginBottom: windowWidth <= 1024 && (windowWidth / windowHeight > 0.75) ? '0px' : '1%', marginLeft: "2%", color: "white"}}>
+                                            R$ {roundInfo.numberOfTickets}
+                                        </p> 
+                        </div>
+                        </Banner>
                     </div>
-                </Banner>
+                :
+                    <div className = "jackpotGameCountdown jackpotGameActive">
+                        <JackpotRoulettePicker />
+                        <JackpotActiveDetails winningTicket={0} winner={0} totalPot={roundInfo.roundInfo.numberOfTickets}/>
+                    </div>
+                }
+
+                
             </div>
             <div className = "jackpotDepositContainer">
                 <div className = "jackpotDepositInfo">
@@ -59,7 +72,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
             </div>
             <div className = "jackpotItemsContainer">
                 {
-                    roundInfo.roundInfo.map(item => <JackpotItem id = {item.limited.AssetID} price = {item.limitedValue} key = {item.startingTicket}/>)
+                    roundInfo.roundInfo.sort((a, b) => b - a).map(item => <JackpotItem id = {item.limited.AssetID} price = {item.limitedValue} key = {item.startingTicket}/>)
                 }
             </div>
             
