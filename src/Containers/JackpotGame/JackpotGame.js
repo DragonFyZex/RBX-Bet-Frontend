@@ -5,6 +5,7 @@ import JackpotProgressBar from '../../Components/JackpotProgressBar/JackpotProgr
 import Banner from '../../Assets/images/Banner'
 import Chevron from '../../Assets/images/Chevron'
 import windowSize from 'react-window-size'
+
 import JackpotItem from '../../Components/JackpotItem/JackpotItem';
 import JackpotCountdownTimer from '../../Components/JackpotCountdownTimer/JackpotCountdownTimer';
 import JackpotRoulettePicker from '../../Components/JackpotRoulettePicker/JackpotRoulettePicker';
@@ -19,8 +20,8 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
             <div className = "jackpotGameInfoContainer">
                 <p style={{fontFamily: "Basic", fontSize: "1em", alignSelf: "flex-start", marginLeft: "2.2em", color: "white"}}>Game #{roundInfo != undefined ? roundInfo.round : "Loading"}</p>
                 
-                { roundInfo.completed === 1 ?
-                    <div>
+                { roundInfo.completed === 0 ?
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
                         <div className = {"jackpotGameCountdown"}>
                         
                                 <JackpotProgressBar numItems = {roundInfo.roundInfo.length}/>

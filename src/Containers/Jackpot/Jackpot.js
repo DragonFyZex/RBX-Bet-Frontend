@@ -13,7 +13,7 @@ export default ({data}) => {
         <div className = "jackpotContainer">
             <div className="screen">
                 <p className="screenText" onClick={() => changeScreen("jackpot")} style={{color: screen === "jackpot" ? "#3ACAD3" : "white"}}>Jackpot</p>
-                <p className="screenText" onClick={() => changeScreen("history")} style={{color: screen === "history" ? "#3ACAD3" : "white"}}>History</p>
+                {/* <p className="screenText" onClick={() => changeScreen("history")} style={{color: screen === "history" ? "#3ACAD3" : "white"}}>History</p> */}
             </div>
             
             {screen == "jackpot" ? <JackpotGame inProgress = {inProgress} roundInfo = {roundInfo} /> : <JackpotHistory />}

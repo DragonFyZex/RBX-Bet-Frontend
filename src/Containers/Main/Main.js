@@ -5,6 +5,7 @@ import Jackpot from '../Jackpot/Jackpot'
 import JackpotLastWinnerInfo from '../JackpotLastWinnerInfo/JackpotLastWinnerInfo';
 import JackpotParticipants from '../JackpotParticipants/JackpotParticipants';
 import io from 'socket.io-client';
+import { isMobile } from 'mobile-device-detect';
 
 
 export default class extends React.Component {
@@ -25,13 +26,17 @@ export default class extends React.Component {
             <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1}}>
                 <div className = "mainContainer">
                     <Jackpot data = {this.state.response}/>
-                    <div className = "infoContainer">
+                    {!isMobile ?
+                     <div className = "infoContainer">
                         <JackpotLastWinnerInfo lastRound = {this.state.response ? this.state.response.lastRoundInfo : {}} />
                         <JackpotParticipants data = {this.state.response}/>
-                    </div>
+                     </div> : 
+                     null
+                    }
+                   
                     
                 </div>
-                <p style = {{marginTop: "auto", fontFamily: "Fira Sans", color: "white"}}> RBX.BET is not affiliated with Roblox Corporation </p>
+                <p style = {{marginTop: "auto", marginBottom: '0.5%', fontFamily: "Fira Sans", color: "white"}}> RBX.BET is not affiliated with Roblox Corporation </p>
             </div>
         )
     }

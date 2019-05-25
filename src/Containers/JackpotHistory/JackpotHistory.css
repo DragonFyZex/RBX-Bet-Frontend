@@ -1,4 +1,4 @@
-.jackpotContainer{
+.historyContainer{
 
     min-width: 75%;
 
@@ -9,25 +9,3 @@
     flex-direction: column;
 }
 
-.screen {
-    display: flex;
-    flex-direction: row;
-
-}
-.screenText {
-    
-    font-family: "Basic";
-    font-size: 1.2em;
-    cursor: pointer;
-    user-select: none;
-    color: white;
-    margin-left: 2em;
-}
-
-@media screen and (max-width: 1000px) {
-    
-    .jackpotContainer {
-        width: 100%;
-        border-radius: 30px;
-    }
-}

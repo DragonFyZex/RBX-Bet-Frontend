@@ -5,6 +5,7 @@ import Header from './Containers/Header/Header';
 import SideBar from './Containers/SideBar/SideBar';
 import Main from './Containers/Main/Main'
 import axios from 'axios'
+import DepositItemsSidebar from './Containers/DepositItemsSidebar/DepositItemsSidebar';
 
 export default class App extends React.Component {
   state = {
@@ -23,6 +24,8 @@ export default class App extends React.Component {
         <Header sidebarIsOpen = {this.state.sidebarIsOpen} setSidebarIsOpen = {this.setSidebarIsOpen}/>
         <Main />
         {/* <SideBar sidebarIsOpen = {true} /> */}
+        <DepositItemsSidebar sidebarIsOpen = {true} />
+
       </div>
     );
   }

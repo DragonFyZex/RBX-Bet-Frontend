@@ -15,7 +15,7 @@ export default ({winningTicket, winner, totalPot}) => {
 					</div>
 
 					<div className="jackpotActiveValueContainer">
-						<p className="jackpotActiveValue">R$2131293</p>
+						<p>R$2131293</p>
 					</div>
 
 					
