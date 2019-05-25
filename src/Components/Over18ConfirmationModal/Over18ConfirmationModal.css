@@ -1,0 +1,85 @@
+.over18Overlay {
+    background: rgba(0, 0, 0, 0.5);
+    inset: 0px;
+    position: fixed;
+    backdrop-filter: blur(10px);
+}
+
+.over18ModalContainer {
+    background: #01060D;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    height: 50%;
+    width: 25%;
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+    margin-top: -12.5%;
+    margin-left: -12.5%;
+    display: flex;
+    flex-direction: column
+    
+}
+
+.modalicon {
+    height: 22%;
+    width: auto;
+    margin-top: 5%
+}
+
+.over18Heading {
+    font-family: "Basic";
+    color: #50C1F1;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1%
+}
+
+.over18Info {
+    font-family: "Basic";
+    color: #FFFFFF;
+    max-width: 80%;
+    align-self: center;
+}
+
+.modalButtonContainer {
+    margin-top: auto;
+    margin-bottom: 5%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.acceptButton {
+    background-color: #1E75C6;
+    user-select: none;
+    padding: 2%;
+    border-radius: 10px;
+    font-family: "Basic";
+    color: white;
+    font-size: 1.2em;
+    min-width: 20%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cancelButton {
+    background-color: #9EA3A9;
+    user-select: none;
+    padding: 2%;
+    border-radius: 10px;
+    font-family: "Basic";
+    color: white;
+    font-size: 1.2em;
+    min-width: 20%;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    /* .modalButtonContainer {
+        flex-direction: column;
+    } */
+}

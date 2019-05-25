@@ -1,6 +1,6 @@
 .jackpotGameInfoContainer {
     background-color: #0477A9;
-    min-height: auto;
+    min-height: 30%;
 
     display: flex;
     flex-direction: column;

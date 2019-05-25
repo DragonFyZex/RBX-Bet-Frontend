@@ -6,6 +6,7 @@ import SideBar from './Containers/SideBar/SideBar';
 import Main from './Containers/Main/Main'
 import axios from 'axios'
 import DepositItemsSidebar from './Containers/DepositItemsSidebar/DepositItemsSidebar';
+import ls from 'local-storage'
 
 export default class App extends React.Component {
   state = {
@@ -18,13 +19,20 @@ export default class App extends React.Component {
     
   }
 
+  componentDidMount = () => {
+    if (ls.get("over18") == null) {
+      ls.set("over18", false);
+    }
+  }
+
   render() {
     return (
       <div className="App">
+      
         <Header sidebarIsOpen = {this.state.sidebarIsOpen} setSidebarIsOpen = {this.setSidebarIsOpen}/>
         <Main />
         {/* <SideBar sidebarIsOpen = {true} /> */}
-        <DepositItemsSidebar sidebarIsOpen = {true} />
+        {/* <DepositItemsSidebar sidebarIsOpen = {true} style={{position: "absolute"}} /> */}
 
       </div>
     );

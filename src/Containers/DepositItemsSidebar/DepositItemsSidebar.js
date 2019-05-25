@@ -29,7 +29,7 @@ export default windowSize(
       const menuWidth = this.props.windowWidth < this.props.windowHeight || this.props.windowWidth < 1024 ? '90%' : '20%';
       return (
         <Menu right width={menuWidth} isOpen={this.props.sidebarIsOpen} noOverlay > 
-          
+
         </Menu>
       );
     }

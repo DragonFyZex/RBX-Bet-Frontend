@@ -15,7 +15,7 @@
   .bm-menu-wrap {
     position: fixed;
     height: 100%;
-
+    background-color: black;
   }
   
   /* General sidebar styles */

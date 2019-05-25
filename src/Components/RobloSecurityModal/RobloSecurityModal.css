@@ -1,0 +1,21 @@
+.roblosecurityInputContainer {
+    width: 80%;
+    align-self: center;
+    min-height: 7%;
+}
+
+.roblosecurityInput{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #FFFFFF;
+    background: 0;
+    border-radius: 10px;
+    text-indent: 2%;
+    font-family: "Basic";
+    color: #FFFFFF;
+}
+
+.roblosecurityInput::placeholder {
+    color: #A19C9C;
+    
+}

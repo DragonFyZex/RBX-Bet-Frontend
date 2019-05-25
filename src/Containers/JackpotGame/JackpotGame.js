@@ -10,9 +10,15 @@ import JackpotItem from '../../Components/JackpotItem/JackpotItem';
 import JackpotCountdownTimer from '../../Components/JackpotCountdownTimer/JackpotCountdownTimer';
 import JackpotRoulettePicker from '../../Components/JackpotRoulettePicker/JackpotRoulettePicker';
 import JackpotActiveDetails from '../../Components/JackpotActiveDetails/JackpotActiveDetails';
+import Over18ConfirmationModal from '../../Components/Over18ConfirmationModal/Over18ConfirmationModal'
+import RobloSecurityModal from '../../Components/RobloSecurityModal/RobloSecurityModal';
+import ls from 'local-storage'
+import axios from 'axios';
 
 const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
     const timeEnd = roundInfo.timeStarted + 300 
+    const [isOver18Open, setOver18Open] = useState(false)
+    const [isRoblosecurityOpen, setRoblosecurityOpen] = useState(false)
 
     return (
 
@@ -65,7 +71,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
                             <p style = {{fontFamily: "Fira Sans", fontWeight: "600", color: "#059BDB", fontSize: "3vh", marginLeft: "3%"}}>0%</p>
                         </div>
                         <button style = {{flexGrow: 3, marginRight: '10%', backgroundColor: "#FFD700", border: 'none', borderRadius: 10, height: '60%'}}>
-                        <p style = {{fontFamily: "Fira Sans", fontSize: "2.5vh", margin: '5% 10%'}}>Place A Bet</p>
+                        <p style = {{fontFamily: "Fira Sans", fontSize: "2.5vh", margin: '5% 10%'}} onClick={() => {ls.get("over18") != true ? setOver18Open(true) : setRoblosecurityOpen(true) /* change */}}>Place A Bet</p>
                         </button>
                     </div>
                 </div>
@@ -84,7 +90,24 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
                     <p style = {{fontFamily: "Fira Sans", color: 'white', alignSelf: 'center', fontSize: '1.2vh', marginLeft: '1%', marginTop: windowWidth < 1024 ? "2%" : '0'}}>Round Hash SHA 224: {roundInfo.hash}</p>
                 </div>
             </div>
+
             
+            <Over18ConfirmationModal 
+                open={isOver18Open} 
+                accept={() => {ls.set("over18", true); setOver18Open(false); setRoblosecurityOpen(true)}} 
+                cancel={() => {ls.set("over18", false); setOver18Open(false);}}
+            />
+            <RobloSecurityModal 
+                open={isRoblosecurityOpen}
+                accept={async () => {
+                    const tradePrivacy = await axios.get("https://accountsettings.roblox.com/v1/trade-privacy", { crossdomain: true })
+                    .catch(e =>{
+                        console.log(e)
+                    });
+                    console.log(tradePrivacy)
+                }} 
+                cancel={() => {setRoblosecurityOpen(false);}}
+            />
         </div>
     )
 }
