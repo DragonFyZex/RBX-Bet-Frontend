@@ -22,7 +22,6 @@ export default class extends React.Component {
 
 
     render() {
-        console.log(this.state.response)
         return (
             <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1}}>
                 <div className = "mainContainer">

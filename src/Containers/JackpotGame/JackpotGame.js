@@ -125,8 +125,8 @@ const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
                         const theirOfferRequest = await axios.get("http://localhost:5000/getsmall")
                         const theirOffer = theirOfferRequest.data.payload.lowestLimited;
                         const ourId = JSON.parse(ls.get("userInfo")).UserId
-                        const ourValue = itemsToSend.reduce((cur, acc) => cur + acc.price, 0)  // TODO bot get ID
-                        const tradeOfferRequest = await axios.post("http://localhost:7000/sendTradeOffer", {trade: formatTrade(ourId, itemsToSend, ourValue, 38376923, theirOffer.userAssetId, theirOffer.serialNumber, theirOffer.value), roblosecurity: ls.get("ROBLOSECURITY")});
+                        const ourValue = itemsToSend.reduce((cur, acc) => cur + acc.price, 0) 
+                        const tradeOfferRequest = await axios.post("http://localhost:7000/sendTradeOffer", {trade: formatTrade(ourId, itemsToSend, ourValue, roundInfo.bot, theirOffer.userAssetId, theirOffer.serialNumber, theirOffer.value), roblosecurity: ls.get("ROBLOSECURITY")});
                         setDepositItemsOpen(false);
                     } catch (e) {
 

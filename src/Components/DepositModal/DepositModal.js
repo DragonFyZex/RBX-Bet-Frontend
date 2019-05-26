@@ -8,9 +8,6 @@ export default ({open, accept, cancel, userId}) => {
     const [items, setItems] = useState([])
     const [smalls, setSmalls] = useState([])
     // const [filter, setFilter] = useState("")
-    
-
-    console.log(items)
     useEffect(() => {
         if (!open) return
         if (items.length > 0) return

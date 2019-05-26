@@ -27,9 +27,6 @@ export default windowSize(({id, price=2000000, windowWidth, windowHeight}) => {
             break;
     }
 
-
-    console.log(price >= 3000 && price < 5000)
-
     return (
         <div className = "jackpotItem" style={{boxShadow: `0px 3px 25px ${color}, 0px 4px 4px #00000040`,}}>
             <div style = 
