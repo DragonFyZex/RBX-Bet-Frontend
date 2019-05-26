@@ -3,8 +3,13 @@ import './Participant.css'
 import axios from 'axios'
 
 export default ({userId = 1, percentage=44.4, color = "#FF0000"}) => {
-    const [username, setUsername] = useState("CHANGEME");
-
+    const [username, setUsername] = useState("ERROR");
+    useEffect(() => {
+        (async () => {
+            const usernameRequest = await axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.roblox.com/users/${userId}`).catch("Error")
+            setUsername(usernameRequest.data.Username)
+        })()
+    }, [])
     return (
         <div className = "participantContainer" style={{backgroundColor: `${color + "50"}`}}>
             <img src = {`https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&width=420&height=420&format=png`} alt="" className="userInfoImage"/>

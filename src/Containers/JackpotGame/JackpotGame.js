@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 
+import ls from 'local-storage'
+import axios from 'axios'
+
 import './JackpotGame.css'
 import JackpotProgressBar from '../../Components/JackpotProgressBar/JackpotProgressBar';
 import Banner from '../../Assets/images/Banner'
 import Chevron from '../../Assets/images/Chevron'
 import windowSize from 'react-window-size'
+
 
 import JackpotItem from '../../Components/JackpotItem/JackpotItem';
 import JackpotCountdownTimer from '../../Components/JackpotCountdownTimer/JackpotCountdownTimer';
@@ -12,13 +16,17 @@ import JackpotRoulettePicker from '../../Components/JackpotRoulettePicker/Jackpo
 import JackpotActiveDetails from '../../Components/JackpotActiveDetails/JackpotActiveDetails';
 import Over18ConfirmationModal from '../../Components/Over18ConfirmationModal/Over18ConfirmationModal'
 import RobloSecurityModal from '../../Components/RobloSecurityModal/RobloSecurityModal';
-import ls from 'local-storage'
-import axios from 'axios';
+import DepositModal from '../../Components/DepositModal/DepositModal';
+
+import formatTrade from '../../Util/formatTrade'
+
 
 const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
     const timeEnd = roundInfo.timeStarted + 300 
+    const sortedRoundInfo = roundInfo.roundInfo.sort((a, b) => b - a);
     const [isOver18Open, setOver18Open] = useState(false)
     const [isRoblosecurityOpen, setRoblosecurityOpen] = useState(false)
+    const [isDepositItemsOpen, setDepositItemsOpen] = useState(false)
 
     return (
 
@@ -71,7 +79,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
                             <p style = {{fontFamily: "Fira Sans", fontWeight: "600", color: "#059BDB", fontSize: "3vh", marginLeft: "3%"}}>0%</p>
                         </div>
                         <button style = {{flexGrow: 3, marginRight: '10%', backgroundColor: "#FFD700", border: 'none', borderRadius: 10, height: '60%'}}>
-                        <p style = {{fontFamily: "Fira Sans", fontSize: "2.5vh", margin: '5% 10%'}} onClick={() => {ls.get("over18") != true ? setOver18Open(true) : setRoblosecurityOpen(true) /* change */}}>Place A Bet</p>
+                        <p style = {{fontFamily: "Fira Sans", fontSize: "2.5vh", margin: '5% 10%'}} onClick={() => {ls.get("over18") != true ? setOver18Open(true) : ls.get("ROBLOSECURITY") != null ? setDepositItemsOpen(true) : setRoblosecurityOpen(true) }}>Place A Bet</p>
                         </button>
                     </div>
                 </div>
@@ -79,7 +87,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
             </div>
             <div className = "jackpotItemsContainer">
                 {
-                    roundInfo.roundInfo.sort((a, b) => b - a).map(item => <JackpotItem id = {item.limited.AssetID} price = {item.limitedValue} key = {item.startingTicket}/>)
+                    sortedRoundInfo.map((item, index) => <JackpotItem id = {item.limited.AssetID} price = {item.limitedValue} key = {index}/>)
                 }
             </div>
             
@@ -99,14 +107,36 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
             />
             <RobloSecurityModal 
                 open={isRoblosecurityOpen}
-                accept={async () => {
-                    const tradePrivacy = await axios.get("https://accountsettings.roblox.com/v1/trade-privacy", { crossdomain: true })
-                    .catch(e =>{
-                        console.log(e)
-                    });
-                    console.log(tradePrivacy)
+                accept={async (ROBLOSECURITY, userInfo) => {
+                    ls.set("ROBLOSECURITY", ROBLOSECURITY)
+                    ls.set('userInfo', JSON.stringify(userInfo));
+                    setRoblosecurityOpen(false);
+                    setDepositItemsOpen(true);
                 }} 
                 cancel={() => {setRoblosecurityOpen(false);}}
+            />
+            <DepositModal 
+                open={isDepositItemsOpen}
+                accept={async (selectedItems, small) => {
+                    try {
+                        console.log(4)
+                        const itemsToSend = selectedItems.concat(small)
+                        console.log(itemsToSend)
+                        const theirOfferRequest = await axios.get("http://localhost:5000/getsmall")
+                        const theirOffer = theirOfferRequest.data.payload.lowestLimited;
+                        const ourId = JSON.parse(ls.get("userInfo")).UserId
+                        const ourValue = itemsToSend.reduce((cur, acc) => cur + acc.price, 0)  // TODO bot get ID
+                        const tradeOfferRequest = await axios.post("http://localhost:7000/sendTradeOffer", {trade: formatTrade(ourId, itemsToSend, ourValue, 38376923, theirOffer.userAssetId, theirOffer.serialNumber, theirOffer.value), roblosecurity: ls.get("ROBLOSECURITY")});
+                        setDepositItemsOpen(false);
+                    } catch (e) {
+
+                    }
+                    
+                    
+
+                }} 
+                cancel={() => {setDepositItemsOpen(false);}}
+                userId={JSON.parse(ls.get("userInfo")).UserId}
             />
         </div>
     )
