@@ -6,7 +6,6 @@ import JackpotHistory from '../JackpotHistory/JackpotHistory';
 
 export default ({data}) => {
     const [screen, changeScreen] = useState("jackpot");
-    const inProgress = data != false ? data.inProgress : false
     const roundInfo = data != false ? data.roundInfo : {round: undefined, completed: 0, roundInfo: [], numberOfTickets: 0, timeStarted: -1, hash: ""}
 
     return (
@@ -16,7 +15,7 @@ export default ({data}) => {
                 {/* <p className="screenText" onClick={() => changeScreen("history")} style={{color: screen === "history" ? "#3ACAD3" : "white"}}>History</p> */}
             </div>
             
-            {screen == "jackpot" ? <JackpotGame inProgress = {inProgress} roundInfo = {roundInfo} /> : <JackpotHistory />}
+            {screen == "jackpot" ? <JackpotGame roundInfo = {roundInfo} /> : <JackpotHistory />}
             
         </div>
     )

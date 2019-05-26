@@ -10,7 +10,7 @@
     width: auto;
     display: flex;
     flex-direction: row;
-    transition: all 16000ms cubic-bezier(.53,.89,.58,1) -3870ms;
+    transition: all 8000ms cubic-bezier(.45,.05,.12,1) -3870ms;
     transition-delay: 50ms
 }
 

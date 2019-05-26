@@ -21,25 +21,14 @@ import DepositModal from '../../Components/DepositModal/DepositModal';
 import formatTrade from '../../Util/formatTrade'
 
 
-const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
-    const timeEnd = roundInfo.timeStarted + 300 
+const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
+    const timeEnd = roundInfo.timeStarted + 300
     const sortedRoundInfo = roundInfo.roundInfo.sort((a, b) => b.limitedValue - a.limitedValue);
     const [isOver18Open, setOver18Open] = useState(false)
     const [isRoblosecurityOpen, setRoblosecurityOpen] = useState(false)
     const [isDepositItemsOpen, setDepositItemsOpen] = useState(false)
-    const [timeLeft, setTimeLeft] = useState(0);
-    useEffect(() => {
-        if (timeLeft >= 1) return
-        const interval = setInterval( () => {
-            setTimeLeft(timeLeft + 1)
-        }, 1000) 
-
-        return () => clearInterval(interval)
-    })
-
-    console.log(timeLeft)
-    console.log(sortedRoundInfo)
     
+
 
     return (
 
@@ -47,7 +36,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
             <div className = "jackpotGameInfoContainer">
                 <p style={{fontFamily: "Basic", fontSize: "1em", alignSelf: "flex-start", marginLeft: "2.2em", color: "white"}}>Game #{roundInfo != undefined ? roundInfo.round : "Loading"}</p>
                 
-                { timeLeft < 1 ? // roundInfo.completed === 0 ?
+                { roundInfo.completed === 0 ?
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
                         <div className = {"jackpotGameCountdown"}>
                         
@@ -55,7 +44,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
                                     <div style={{lineHeight: "100%", display: 'flex', flexDirection: 'column', justifyContent: "center", marginLeft: "1%"}}>
                                         <p style={{fontFamily: "Basic", color: "white", fontSize: "2vh"}}>or</p>
                                     </div>
-                                <JackpotCountdownTimer timeEnd = {roundInfo.timeStarted == -1 ? -1 : timeEnd}/>
+                                <JackpotCountdownTimer timeEnd = {roundInfo.timeStarted == -1 || roundInfo.timeStarted == undefined ? -1 : timeEnd}/>
                         </div>
 
                         <Banner> 
@@ -63,15 +52,15 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
                             <p style = {{color: "#FAD450", fontFamily: "Fira Sans", margin: 0, fontSize: windowWidth <= 1024 ? '2.5vh' : '4vh', fontWeight: "600"}}>AT STAKE: </p> 
                             <p style = {{ color: "#FAD450", fontFamily: "Basic", margin: 0, fontSize: windowWidth <= 1024 ? '2.5vh' : '4vh', 
                                         marginBottom: windowWidth <= 1024 && (windowWidth / windowHeight > 0.75) ? '0px' : '1%', marginLeft: "2%", color: "white"}}>
-                                            R$ {roundInfo.numberOfTickets}
+                                            R$ {roundInfo.numberOfTickets == undefined ? 0 : roundInfo.numberOfTickets}
                                         </p> 
                         </div>
                         </Banner>
                     </div>
                 :
                     <div className = "jackpotGameCountdown jackpotGameActive">
-                        <JackpotRoulettePicker roundInfo = {roundInfo} />
-                        <JackpotActiveDetails winningTicket={0} winner={0} totalPot={roundInfo.roundInfo.numberOfTickets}/>
+                        <JackpotRoulettePicker roundInfo = {roundInfo}/>
+                        <JackpotActiveDetails winningTicket={roundInfo.winningTicket} winner={roundInfo.winner} totalPot={roundInfo.numberOfTickets}/>
                     </div>
                 }
 
@@ -132,9 +121,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
                 open={isDepositItemsOpen}
                 accept={async (selectedItems, small) => {
                     try {
-                        console.log(4)
                         const itemsToSend = selectedItems.concat(small)
-                        console.log(itemsToSend)
                         const theirOfferRequest = await axios.get("http://localhost:5000/getsmall")
                         const theirOffer = theirOfferRequest.data.payload.lowestLimited;
                         const ourId = JSON.parse(ls.get("userInfo")).UserId

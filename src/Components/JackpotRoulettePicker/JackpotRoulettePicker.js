@@ -1,42 +1,37 @@
-import React, {useState, useEffect, createRef} from 'react'
+import React, {useState, useEffect, useMemo, createRef} from 'react'
 import './JackpotRoulettePicker.css'
+
+
 
 export default  ({roundInfo}) => {
 	const [itemReference] = useState(createRef());
 	const [listReference] = useState(createRef());
 	const [jackpotItems, setJackpotItems] = useState([])
+	const [isReferenceSet, setIsReferenceSet] = useState(false)
 
-	const [timeLeft, setTimeLeft] = useState(0);
-    useEffect(() => {
-        if (timeLeft >= 2) return
-        const interval = setInterval( () => {
-            setTimeLeft(timeLeft + 1)
-        }, 1000) 
-
-        return () => clearInterval(interval)
-	})
-
-	// gets the users and assigns them a percentage then shuffles them
-    
-	if (jackpotItems.length === 0) {
+	useEffect(() => {
 		setJackpotItems(getJackpotItems(roundInfo));
-	}
-		
-
+	}, [roundInfo.round])
 
 	return (
 		<div className="jackpotPlayers">
-			<div className="jackpotPlayersList" ref = {listReference} style={itemReference.current != null ?{transform:`translate3d(-${itemReference.current.offsetLeft - listReference.current.offsetWidth / 2 + itemReference.current.offsetWidth/2}px, 0, 0)`} : {}}>
+			<div className="jackpotPlayersList" ref = {listReference} style={jackpotItems.length && isReferenceSet > 0 ?{transform:`translate3d(-${itemReference.current.offsetLeft - listReference.current.offsetWidth / 2 + (Math.random() * (0.5 - -0.5) + -0.5) * (itemReference.current.offsetWidth/2) }px, 0, 0)`} : {}}>
 				{jackpotItems.map(user =>
-					<img src = {`https://www.roblox.com/headshot-thumbnail/image?userId=${user.userId}&width=420&height=420&format=png`} alt="" className="jackpotUserImage" ref={user.selected ? itemReference : null}/>
+					<img src = {`https://www.roblox.com/headshot-thumbnail/image?userId=${user.userId}&width=420&height=420&format=png`} 
+						alt="" 
+						className="jackpotUserImage" 
+						ref={user.selected ? itemReference : null} 
+						onLoad={() => {
+							if (!isReferenceSet) setIsReferenceSet(true)
+						}}/>
 				)}
 				
-
 			</div>
 			
 		</div>
 	)
 }
+
 
 function getJackpotItems(roundInfo){
 	const users = [];
@@ -72,4 +67,3 @@ function shuffle(a) {
     }
     return a;
 }
-

@@ -17,11 +17,12 @@ export default class extends React.Component {
     componentDidMount = () => {
         const socket = io('http://localhost:5000');
         socket.on("getRound", data => this.setState({response: data}));
-        
+      
     }
 
 
     render() {
+        console.log(this.state.response)
         return (
             <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1}}>
                 <div className = "mainContainer">

@@ -26,8 +26,10 @@ export default ({data}) => {
            
             <div className = "jackpotParticipantsList">     
                 {
-                    sortedUsers.map(user => <Participant userId = {user.userId} username = "CHANGEME" color = "#F44123" percentage = {Number(user.worth / data.roundInfo.numberOfTickets) * 100} />)
+                    sortedUsers.map((user, index) => <Participant userId = {user.userId} username = "" color = {index % 2 ? "#008ECC" : "#F44123"} percentage = {Number(user.worth / data.roundInfo.numberOfTickets) * 100} />)
+                    
                 }
+                
                 
             </div>
 
