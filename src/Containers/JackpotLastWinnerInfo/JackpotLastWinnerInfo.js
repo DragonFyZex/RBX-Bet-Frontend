@@ -3,18 +3,12 @@ import axios from 'axios'
 
 import './JackpotLastWinnerInfo.css'
 
-export default ({lastRound}) => {
-    const [username, setUsername] = useState("ERROR")
-    const [lastWinner, setLastWinner] = useState("ERROR")
-    
-    console.log(lastRound == undefined)
-    // if (lastRound.winner == undefined) {
-    //     setLastWinner(lastRound.winner)
-    // }
+export default ({lastRound = {winner: "none", numberOfTickets: 0, percentage: 0}}) => {
+    const [username, setUsername] = useState("NONE")
     
     useEffect(() => {
         (async () => {
-            const usernameRequest = await axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.roblox.com/users/${lastRound.winner}`).catch("Error")
+            const usernameRequest = await axios.get(`https://cors.io/?https://api.roblox.com/users/${lastRound.winner}`).catch("Error")
             setUsername(usernameRequest.data.Username)
         })()
     })
@@ -26,7 +20,7 @@ export default ({lastRound}) => {
             </div>
             <div className = "jackpotLastWinnerUserContainer">
                 <div className = "jackpotLastWinnerUserCircle">
-                    <div className = "jackpotLastWinnerUserBackground" style = {{backgroundImage: `url("https://www.roblox.com/headshot-thumbnail/image?userId=${lastWinner}&width=420&height=420&format=png")`}}/>
+                    <div className = "jackpotLastWinnerUserBackground" style = {{backgroundImage: `url("https://www.roblox.com/headshot-thumbnail/image?userId=${lastRound.winner}&width=420&height=420&format=png")`}}/>
                 </div>
                 <p className="jackpotLastWinnerName">{username}</p>
             </div>

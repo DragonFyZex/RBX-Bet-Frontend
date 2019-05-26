@@ -17,7 +17,7 @@ export default ({data}) => {
         users[index].worth = users[index].worth + item.limitedValue
     })
     const sortedUsers = users.sort((a, b) => b.worth - a.worth)
-    console.log(sortedUsers)
+    
     return (
         <div className = "participantsContainer">
             <div className = "jackpotParticipantsTop">

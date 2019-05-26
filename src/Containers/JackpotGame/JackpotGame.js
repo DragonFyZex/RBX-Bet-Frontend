@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import ls from 'local-storage'
 import axios from 'axios'
@@ -23,10 +23,23 @@ import formatTrade from '../../Util/formatTrade'
 
 const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
     const timeEnd = roundInfo.timeStarted + 300 
-    const sortedRoundInfo = roundInfo.roundInfo.sort((a, b) => b - a);
+    const sortedRoundInfo = roundInfo.roundInfo.sort((a, b) => b.limitedValue - a.limitedValue);
     const [isOver18Open, setOver18Open] = useState(false)
     const [isRoblosecurityOpen, setRoblosecurityOpen] = useState(false)
     const [isDepositItemsOpen, setDepositItemsOpen] = useState(false)
+    const [timeLeft, setTimeLeft] = useState(0);
+    useEffect(() => {
+        if (timeLeft >= 1) return
+        const interval = setInterval( () => {
+            setTimeLeft(timeLeft + 1)
+        }, 1000) 
+
+        return () => clearInterval(interval)
+    })
+
+    console.log(timeLeft)
+    console.log(sortedRoundInfo)
+    
 
     return (
 
@@ -34,7 +47,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
             <div className = "jackpotGameInfoContainer">
                 <p style={{fontFamily: "Basic", fontSize: "1em", alignSelf: "flex-start", marginLeft: "2.2em", color: "white"}}>Game #{roundInfo != undefined ? roundInfo.round : "Loading"}</p>
                 
-                { roundInfo.completed === 0 ?
+                { timeLeft < 1 ? // roundInfo.completed === 0 ?
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
                         <div className = {"jackpotGameCountdown"}>
                         
@@ -57,7 +70,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
                     </div>
                 :
                     <div className = "jackpotGameCountdown jackpotGameActive">
-                        <JackpotRoulettePicker />
+                        <JackpotRoulettePicker roundInfo = {roundInfo} />
                         <JackpotActiveDetails winningTicket={0} winner={0} totalPot={roundInfo.roundInfo.numberOfTickets}/>
                     </div>
                 }
@@ -136,7 +149,7 @@ const JackpotGame = ({inProgress, roundInfo, windowWidth, windowHeight}) => {
 
                 }} 
                 cancel={() => {setDepositItemsOpen(false);}}
-                userId={JSON.parse(ls.get("userInfo")).UserId}
+                userId={ls.get("userInfo") != null ? JSON.parse(ls.get("userInfo")).UserId : 0}
             />
         </div>
     )

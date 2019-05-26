@@ -1,5 +1,5 @@
 .jackpotPlayers {
-    height: 5em;
+    height: 10vh;
     width: 100%;
 
     overflow: hidden;
@@ -10,8 +10,8 @@
     width: auto;
     display: flex;
     flex-direction: row;
-    transform: translate3d(-11600px, 0px, 0px);
     transition: all 16000ms cubic-bezier(.53,.89,.58,1) -3870ms;
+    transition-delay: 50ms
 }
 
 

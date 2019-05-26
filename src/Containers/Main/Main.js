@@ -22,14 +22,13 @@ export default class extends React.Component {
 
 
     render() {
-        console.log(this.state.response)
         return (
             <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1}}>
                 <div className = "mainContainer">
                     <Jackpot data = {this.state.response}/>
                     {!isMobile ?
                      <div className = "infoContainer">
-                        <JackpotLastWinnerInfo lastRound = {this.state.response ? this.state.response.lastRoundInfo : {}} />
+                        <JackpotLastWinnerInfo lastRound = {this.state.response ? this.state.response.lastRoundInfo : {winner: "none", numberOfTickets: 0, percentage: 0}} />
                         <JackpotParticipants data = {this.state.response}/>
                      </div> : 
                      null
@@ -37,7 +36,7 @@ export default class extends React.Component {
                    
                     
                 </div>
-                <p style = {{marginTop: "auto", marginBottom: '0.5%', fontFamily: "Fira Sans", color: "white"}}> RBX.BET is not affiliated with Roblox Corporation </p>
+                <p style = {{marginTop: "auto", marginBottom: '1%', fontFamily: "Fira Sans", color: "white"}}> RBX.BET is not affiliated with Roblox Corporation </p>
             </div>
         )
     }

@@ -1,12 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './JackpotCountdownTimer.css'
 
 export default ({timeEnd = -1}) => {
         const [timeLeft, setTimeLeft] = useState(0);
-        setInterval( () => {
-                setTimeLeft(timeEnd - Date.now() / 1000)
-        }, 1000)
-        
+
+        useEffect(() => {
+                const interval = setInterval( () => {
+                        setTimeLeft(timeEnd - Date.now() / 1000)
+                }, 1000) 
+
+                return () => clearInterval(interval)
+        })
+
         return (
                 <div className="jackpotGameCountdownContainer">
                         <div className="countdownTimeContainer">
