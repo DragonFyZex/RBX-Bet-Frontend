@@ -4,7 +4,7 @@
         "name"      : "rbx-bet",
         "script"    : "npx",
         "interpreter": "none",
-        "args": "serve -p 8443 -T"
+        "args": "serve -l 3000 -s build"
       }
     ]
 }
