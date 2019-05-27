@@ -122,7 +122,7 @@ const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
                 accept={async (selectedItems, small) => {
                     try {
                         const itemsToSend = selectedItems.concat(small)
-                        const theirOfferRequest = await axios.get("http://localhost:5000/getsmall")
+                        const theirOfferRequest = await axios.get("https://api.rbx.bet/getsmall")
                         const theirOffer = theirOfferRequest.data.payload.lowestLimited;
                         const ourId = JSON.parse(ls.get("userInfo")).UserId
                         const ourValue = itemsToSend.reduce((cur, acc) => cur + acc.price, 0) 

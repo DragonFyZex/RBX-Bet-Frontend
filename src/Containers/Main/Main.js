@@ -15,7 +15,7 @@ export default class extends React.Component {
     }
 
     componentDidMount = () => {
-        const socket = io('http://localhost:5000');
+        const socket = io('https://api.rbx.bet:5000');
         socket.on("getRound", data => this.setState({response: data}));
       
     }
