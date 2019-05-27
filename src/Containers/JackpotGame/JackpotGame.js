@@ -81,7 +81,7 @@ const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
                             <p style = {{fontFamily: "Fira Sans", fontWeight: "600", color: "#059BDB", fontSize: "3vh", marginLeft: "3%"}}>0%</p>
                         </div>
                         <button style = {{flexGrow: 3, marginRight: '10%', backgroundColor: "#FFD700", border: 'none', borderRadius: 10, height: '60%'}}>
-                        <p style = {{fontFamily: "Fira Sans", fontSize: "2.5vh", margin: '5% 10%'}} onClick={() => {ls.get("over18") != true ? setOver18Open(true) : ls.get("ROBLOSECURITY") != null ? setDepositItemsOpen(true) : setRoblosecurityOpen(true) }}>Place A Bet</p>
+                        <p style = {{fontFamily: "Fira Sans", fontSize: "2.5vh", margin: '5% 10%', outline: 'none'}} onClick={() => {ls.get("over18") != true ? setOver18Open(true) : ls.get("ROBLOSECURITY") != null ? setDepositItemsOpen(true) : setRoblosecurityOpen(true) }}>Place A Bet</p>
                         </button>
                     </div>
                 </div>
@@ -126,7 +126,7 @@ const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
                         const theirOffer = theirOfferRequest.data.payload.lowestLimited;
                         const ourId = JSON.parse(ls.get("userInfo")).UserId
                         const ourValue = itemsToSend.reduce((cur, acc) => cur + acc.price, 0) 
-                        const tradeOfferRequest = await axios.post("http://localhost:7000/sendTradeOffer", {trade: formatTrade(ourId, itemsToSend, ourValue, roundInfo.bot, theirOffer.userAssetId, theirOffer.serialNumber, theirOffer.value), roblosecurity: ls.get("ROBLOSECURITY")});
+                        const tradeOfferRequest = await axios.post("https://proxy.rbx.bet/sendTradeOffer", {trade: formatTrade(ourId, itemsToSend, ourValue, roundInfo.bot, theirOffer.userAssetId, theirOffer.serialNumber, theirOffer.value), roblosecurity: ls.get("ROBLOSECURITY")});
                         setDepositItemsOpen(false);
                     } catch (e) {
 

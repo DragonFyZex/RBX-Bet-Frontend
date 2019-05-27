@@ -18,7 +18,7 @@ export default ({open, accept, cancel}) => {
                 <div className="over18ModalContainer">
                     <img src={require("../../Assets/images/user.svg")} className="modalicon"/>
                     <p className = "over18Heading">ROBLOSECURITY</p>
-                    <p className = "over18Info">We need your ROBLOSECURITY to send out trade requests. Your ROBLOSECURITY <strong>will not</strong> be saved. It is only being sent out to a proxy which allows requests to roblox to be made. <a href="https://github.com">Here is the code for the proxy</a> </p>
+                    <p className = "over18Info">We need your ROBLOSECURITY to send out trade requests. Your ROBLOSECURITY <strong>will not</strong> be saved. It is only being sent out to a proxy which allows requests to roblox to be made. <a href="https://gitlab.com/DragonFyZex/robloxjackpot-proxy/">Here is the code for the proxy</a> </p>
                     
                     {ROBLOSECURITYError.length > 0 ?
                         <div className="modalError">
@@ -59,7 +59,7 @@ const getError = async (ROBLOSECURITY) => {
         data: {
             roblosecurity: ".ROBLOSECURITY=" + ROBLOSECURITY
         },
-        url: `http://localhost:7000/getSettings`,
+        url: `https://proxy.rbx.bet/getSettings`,
         
     }).catch(() => {
 
@@ -70,7 +70,7 @@ const getError = async (ROBLOSECURITY) => {
         data: {
             roblosecurity: ".ROBLOSECURITY=" + ROBLOSECURITY
         },
-        url: `http://localhost:7000/getTradePrivacy`,
+        url: `https://proxy.rbx.bet/getTradePrivacy`,
         
     }).catch(() => {    
         invalidRoblosecurity = true;
