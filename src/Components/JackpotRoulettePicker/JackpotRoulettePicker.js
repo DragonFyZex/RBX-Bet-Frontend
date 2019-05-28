@@ -15,7 +15,7 @@ export default  ({roundInfo}) => {
 
 	return (
 		<div className="jackpotPlayers">
-			<div className="jackpotPlayersList" ref = {listReference} style={jackpotItems.length && isReferenceSet > 0 ?{transform:`translate3d(-${itemReference.current.offsetLeft - listReference.current.offsetWidth / 2 + (Math.random() * (0.5 - -0.5) + -0.5) * (itemReference.current.offsetWidth/2) }px, 0, 0)`} : {}}>
+			<div className="jackpotPlayersList" ref = {listReference} style={jackpotItems.length && isReferenceSet > 0 ?{transform:`translate3d(-${itemReference.current.offsetLeft - listReference.current.offsetWidth / 2 + ((Math.random() * (0.2 - -0.2) -0.2) * (itemReference.current.offsetWidth/2)) }px, 0, 0)`} : {}}>
 				{jackpotItems.map(user =>
 					<img src = {`https://www.roblox.com/headshot-thumbnail/image?userId=${user.userId}&width=420&height=420&format=png`} 
 						alt="" 
@@ -27,7 +27,6 @@ export default  ({roundInfo}) => {
 				)}
 				
 			</div>
-			
 		</div>
 	)
 }

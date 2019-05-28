@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import './JackpotActiveDetails.css'
 
-export default ({winningTicket = "", winner = "", totalPot}) => {
+export default ({winningTicket = "", winner = "", percentage = "", totalPot}) => {
 
 	const [username, setUsername] = useState("NONE")
 	const [currentTime, setCurrentTime] = useState(0);
@@ -24,7 +24,12 @@ export default ({winningTicket = "", winner = "", totalPot}) => {
     })	
 
         return (
-                <div className="jackpotActiveContainer">
+                
+				<div className="jackpotActiveContainer">
+					<div className="jackpotActiveWinningContainer">
+						<p className = "jackpotActiveWinningLabel">Percentage:</p>
+						<p className = "jackpotActiveWinner">{currentTime >= 9 ? percentage : "???"}</p>
+					</div>
                 	<div className="jackpotActiveWinningContainer">
 						<p className = "jackpotActiveWinningLabel">Winning Ticket:</p>
 						<p className ="jackpotActiveWinningTicket">{currentTime >= 9 ? winningTicket : "???"}</p>
@@ -33,6 +38,7 @@ export default ({winningTicket = "", winner = "", totalPot}) => {
 						<p className = "jackpotActiveWinningLabel">Winner:</p>
 						<p className = "jackpotActiveWinner">{currentTime >= 9 ? username : "???"}</p>
 					</div>
+
 
 					<div className="jackpotActiveValueContainer">
 						<p>R${totalPot}</p>

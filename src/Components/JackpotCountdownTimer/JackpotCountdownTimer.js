@@ -15,7 +15,7 @@ export default ({timeEnd = -1}) => {
         return (
                 <div className="jackpotGameCountdownContainer">
                         <div className="countdownTimeContainer">
-                                <p style={{marginTop: "3%", marginBottom: "3%"}}>{timeEnd === -1 || timeLeft < 0 ? "00" : ("0" + Math.floor(timeLeft / 60)).slice(-2)}</p>
+                                <p style={{marginTop: "3%", marginBottom: "3%"}}>{timeLeft < 0 && timeEnd != -1 ? "00" : timeEnd === -1 ? "03" : ("0" + Math.floor(timeLeft / 60)).slice(-2)}</p>
                         </div>
         
                         <div style={{height: "100%", display: 'flex', flexDirection: 'column', justifyContent: "center", marginLeft: "1%"}}>
