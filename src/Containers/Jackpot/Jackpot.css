@@ -24,6 +24,13 @@
     margin-left: 2em;
 }
 
+.screenTextClickable {
+    
+    align-self: center;
+    margin-right: 1%;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 1000px) {
     
     .jackpotContainer {
