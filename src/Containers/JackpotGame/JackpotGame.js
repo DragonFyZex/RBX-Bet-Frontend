@@ -30,7 +30,6 @@ const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
     
 
     // gets num of items deposited
-    console.log(roundInfo)
     const items = roundInfo.roundInfo;
     // gets all the users
     const users = [];
