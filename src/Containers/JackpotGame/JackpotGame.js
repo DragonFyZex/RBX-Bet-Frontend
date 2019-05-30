@@ -89,7 +89,7 @@ const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
             { roundInfo.completed === 0 ?
             <div className = "jackpotDepositContainer">
                 <div className = "jackpotDepositInfo">
-                    <strong className = "jackpotDepositInfoBigText">You have deposited - {ourDeposited} (out of 4) items</strong>
+                    <strong className = "jackpotDepositInfoBigText">You have deposited - {ourDeposited} (out of 3) items</strong>
                     <p className = "jackpotDepositInfoSmallText">The higher the bet, the greater the chance to win</p>
                     <p className = "jackpotDepositInfoSmallText">A small will be taken from your inventory when you deposit.</p>
                     <p className = "jackpotDepositInfoSmallText">To recieve your winnings, make sure you have enough smalls in your inventory.</p>
