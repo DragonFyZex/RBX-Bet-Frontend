@@ -57,6 +57,7 @@
 }
 
 .jackpotItemsContainer {
+    background-color: #2C2C2C;
     min-height: 27%;
     display: flex;
     flex-direction: row;

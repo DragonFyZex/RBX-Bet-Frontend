@@ -2,7 +2,7 @@
     background: linear-gradient(0deg, #171717, #171717), #171717;
 
     border-radius: 6px;
-    width: 4.1vw;
+    width: 10vw;
     height: 6rem;
     display: flex;
     flex-direction: column;
@@ -31,9 +31,9 @@
     }
 }
 
-@media screen and (max-width: 1000px) and (max-height: 800px) {
-    .jackpotItem {
-        width: 20%;
+@media screen and (max-width: 1000px) and (max-height: 815) {
+    .depositItem {
+        width: 25%;
         height: 60%;
         margin: 2% 2.5%;
         box-shadow: 0px 1px 9px rgba(255, 215, 0, 0.75), 0px 2px 2px #00000040;
@@ -45,9 +45,9 @@
 }
 
 @media screen and (max-width: 1024px) and (min-height: 800px) {
-    .jackpotItem {
-        width: 17vw;
-        height: 50%;
+    .depositItem {
+        width: 20%;
+        height: 75%;
     }
     
     .jackpotItemPrice {

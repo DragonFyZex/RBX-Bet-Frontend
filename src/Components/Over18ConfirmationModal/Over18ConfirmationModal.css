@@ -79,7 +79,10 @@
 }
 
 @media screen and (max-width: 1000px) {
-    /* .modalButtonContainer {
-        flex-direction: column;
-    } */
+    .over18ModalContainer {
+        height: 100%;
+        width: 100%;
+        top: 7.5%;
+        left: 12.5%;
+    }
 }

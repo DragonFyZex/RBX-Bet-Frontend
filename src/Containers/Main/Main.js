@@ -26,7 +26,7 @@ export default class extends React.Component {
             <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1}}>
                 <div className = "mainContainer">
                     <Jackpot data = {this.state.response}/>
-                    {!isMobile ?
+                    {false ?
                      <div className = "infoContainer">
                         <JackpotLastWinnerInfo lastRound = {this.state.response ? this.state.response.lastRoundInfo : {winner: "none", numberOfTickets: 0, percentage: 0}} />
                         <JackpotParticipants data = {this.state.response}/>
@@ -36,7 +36,6 @@ export default class extends React.Component {
                    
                     
                 </div>
-                <p style = {{marginTop: "auto", marginBottom: '1%', fontFamily: "Fira Sans", color: "white"}}> RBX.BET is not affiliated with Roblox Corporation </p>
             </div>
         )
     }
