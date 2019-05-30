@@ -1,3 +1,9 @@
+.TOS {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
 .TOS > h1 {
     color: #808080;
     font-family: 'Basic';
