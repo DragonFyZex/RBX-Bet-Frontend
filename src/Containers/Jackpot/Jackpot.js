@@ -12,8 +12,7 @@ export default ({data}) => {
         <div className = "jackpotContainer">
             <div className="screen">
                 <p className="screenText" onClick={() => changeScreen("jackpot")} style={{color: screen === "jackpot" ? "#3ACAD3" : "white"}}>Jackpot</p>
-                <a className="screenText screenTextClickable" href="https://discord.gg/vx6MA7S" target="_blank"  style={{marginLeft: 'auto'}}>Support</a>
-                <a className="screenText screenTextClickable" href="https://twitter.com/rbxbet" target="_blank" style={{marginRight: '3%'}}>Social</a>
+                
                 {/* <p className="screenText" onClick={() => changeScreen("history")} style={{color: screen === "history" ? "#3ACAD3" : "white"}}>History</p> */}
             </div>
             
