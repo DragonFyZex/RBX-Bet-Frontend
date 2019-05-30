@@ -8,7 +8,7 @@ export default ({lastRound = {winner: "none", numberOfTickets: 0, percentage: 0}
     
     useEffect(() => {
         (async () => {
-            const usernameRequest = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.roblox.com/users/${lastRound.winner}`).catch("Error")
+            const usernameRequest = await axios.get(`https://yacdn.org/proxy/https://api.roblox.com/users/${lastRound.winner}`).catch("Error")
             setUsername(usernameRequest.data.Username)
         })()
     })

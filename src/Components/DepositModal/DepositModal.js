@@ -12,7 +12,7 @@ export default ({open, accept, cancel, userId}) => {
         if (!open) return
         if (items.length > 0) return
         (async () => {  
-            const items = await axios.get(`https://cors-anywhere.herokuapp.com/https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?sortOrder=Asc&limit=100`)
+            const items = await axios.get(`https://yacdn.org/proxy/https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?sortOrder=Asc&limit=100`)
             const shrinkedItems = items.data.data.map(item => ({assetId: item.assetId, serialNumber: item.serialNumber == null ? "---" : item.serialNumber, UserAssetID: item.userAssetId, price: item.recentAveragePrice, selected: false}))
             const sortedItems = shrinkedItems.sort((a, b) => b.price - a.price)
             const filteredItems = sortedItems.filter((item) => item.price >= 500)
@@ -64,7 +64,7 @@ export default ({open, accept, cancel, userId}) => {
                         <p className = "acceptButton" 
                             onClick={async () => {
                                 // get new Prices
-                                const newItems = await axios.get(`https://cors-anywhere.herokuapp.com/https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?sortOrder=Asc&limit=100`)
+                                const newItems = await axios.get(`https://yacdn.org/proxy/https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?sortOrder=Asc&limit=100`)
                                 const shrinkedItems = newItems.data.data.map(item => ({assetId: item.assetId, serialNumber: item.serialNumber == null ? "---" : item.serialNumber, UserAssetID: item.userAssetId, price: item.recentAveragePrice, selected: false}))
                                 const sortedItems = shrinkedItems.sort((a, b) => b.price - a.price)
                                 const filteredItems = sortedItems.filter((item) => item.price >= 500)
