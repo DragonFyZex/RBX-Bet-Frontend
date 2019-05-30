@@ -6,7 +6,7 @@ export default ({userId = 1, percentage=44.4, color = "#FF0000"}) => {
     const [username, setUsername] = useState("ERROR");
     useEffect(() => {
         (async () => {
-            const usernameRequest = await axios.get(`https://cors.io/?https://api.roblox.com/users/${userId}`).catch("Error")
+            const usernameRequest = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.roblox.com/users/${userId}`).catch("Error")
             setUsername(usernameRequest.data.Username)
         })()
     }, [])

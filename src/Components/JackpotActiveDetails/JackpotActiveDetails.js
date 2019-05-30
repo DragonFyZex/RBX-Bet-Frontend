@@ -18,7 +18,7 @@ export default ({winningTicket = "", winner = "", percentage = "", totalPot}) =>
 
     useEffect(() => {
         (async () => {
-            const usernameRequest = await axios.get(`https://cors.io/?https://api.roblox.com/users/${winner}`).catch("Error")
+            const usernameRequest = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.roblox.com/users/${winner}`).catch("Error")
             setUsername(usernameRequest.data.Username)
         })()
     })	
