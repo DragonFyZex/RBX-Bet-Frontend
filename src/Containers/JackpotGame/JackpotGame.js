@@ -80,7 +80,7 @@ const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
                     <div className = "jackpotGameCountdown jackpotGameActive">
                         <JackpotRoulettePicker roundInfo = {roundInfo}/>
                         <img src={require("../../Assets/images/doubleuparrow.svg")} height="12%" style={{alignSelf: 'center', marginTop: '1vh'}}/>
-                        <JackpotActiveDetails winningTicket={roundInfo.winningTicket} winner={roundInfo.winner} totalPot={roundInfo.numberOfTickets}/>
+                        <JackpotActiveDetails winningTicket={roundInfo.winningTicket} winner={roundInfo.winner} totalPot={roundInfo.numberOfTickets} percentage={roundInfo.percentage}/>
                     </div>
                 }
 
