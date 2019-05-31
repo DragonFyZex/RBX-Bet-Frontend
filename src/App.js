@@ -7,10 +7,12 @@ import Main from './Containers/Main/Main'
 import axios from 'axios'
 import DepositItemsSidebar from './Containers/DepositItemsSidebar/DepositItemsSidebar';
 import ls from 'local-storage'
+import RobloSecurityModal from './Components/RobloSecurityModal/RobloSecurityModal'
 
 export default class App extends React.Component {
   state = {
-    sidebarIsOpen: false
+    sidebarIsOpen: false,
+    isRoblosecurityOpen: false
   }
 
   
@@ -19,10 +21,28 @@ export default class App extends React.Component {
     
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     if (ls.get("over18") == null) {
       ls.set("over18", false);
     }
+
+    if (ls.get("ROBLOSECURITY") == null) 
+      return
+
+    const tradePrivacyRequest = await axios({
+      method: 'post',
+      data: {
+          roblosecurity: ".ROBLOSECURITY=" + ls.get("ROBLOSECURITY")
+      },
+      url: `https://proxy.rbx.bet/getTradePrivacy`,
+      
+    }).catch(() => {    
+        this.setState({isRoblosecurityOpen: true})
+    });
+
+    
+  
+    
   }
 
   render() {
@@ -33,7 +53,15 @@ export default class App extends React.Component {
         <Main />
         {/* <SideBar sidebarIsOpen = {true} /> */}
         {/* <DepositItemsSidebar sidebarIsOpen = {true} style={{position: "absolute"}} /> */}
-
+        <RobloSecurityModal 
+          open={this.state.isRoblosecurityOpen}
+          accept={async (ROBLOSECURITY, userInfo) => {
+              ls.set("ROBLOSECURITY", ROBLOSECURITY)
+              ls.set('userInfo', JSON.stringify(userInfo));
+              this.setState({isRoblosecurityOpen: false});
+          }} 
+          cancel={() => {this.setState({isRoblosecurityOpen: false});}}
+        />
       </div>
     );
   }
