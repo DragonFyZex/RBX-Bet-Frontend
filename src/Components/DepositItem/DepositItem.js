@@ -9,7 +9,7 @@ export default windowSize(({id, price=2000000, selected, onClick, windowWidth, w
             <div style = 
                 {{height: "100px", width: "100px", 
                 backgroundImage: `url(https://www.roblox.com/Thumbs/Asset.ashx?format=png&width=420&height=230&assetId=${id})`, 
-                backgroundSize: windowWidth < 1024 && windowHeight < 800 ? "80%" : "14vh", 
+                backgroundSize: windowWidth < 1024 && windowHeight < 800 ? "80%" : "10vh", 
                 backgroundPositionX: windowWidth < 1024 && windowHeight < 800 ? "30%" : "47%", 
                 alignSelf: "center",
                 marginTop: "1vh",
