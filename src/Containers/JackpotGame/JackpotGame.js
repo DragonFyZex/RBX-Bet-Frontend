@@ -22,7 +22,7 @@ import formatTrade from '../../Util/formatTrade'
 
 
 const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
-    const timeEnd = roundInfo.timeStarted + 180
+    const timeEnd = roundInfo.timeStarted + 120
     const sortedRoundInfo = roundInfo.roundInfo.sort((a, b) => b.limitedValue - a.limitedValue);
     const [isOver18Open, setOver18Open] = useState(false)
     const [isRoblosecurityOpen, setRoblosecurityOpen] = useState(false)
