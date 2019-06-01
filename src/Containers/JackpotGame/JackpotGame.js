@@ -55,7 +55,7 @@ const JackpotGame = ({roundInfo, windowWidth, windowHeight}) => {
             <div className = "jackpotGameInfoContainer">
                 <p style={{fontFamily: "Basic", fontSize: "1em", alignSelf: "flex-start", marginLeft: "2.2em", color: "white"}}>Game #{roundInfo != undefined ? roundInfo.round : "Loading"}</p>
                 
-                { roundInfo.completed === 1 ?
+                { roundInfo.completed === 0 ?
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
                         <div className = {"jackpotGameCountdown"}>
                         
