@@ -27,7 +27,7 @@ export default ({winningTicket = "", winner = "", percentage = "", totalPot}) =>
                 
 				<div className="jackpotActiveContainer">
 					<div className="jackpotActiveWinningContainer">
-						<p className = "jackpotActiveWinningLabel">Percentage:</p>
+						<a className = "jackpotActiveWinningLabel" href={'http://sha224.net?val=' + percentage} style={{textDecoration: 'none', color: 'black'}} target="_blank">Round Percentage:</a>
 						<p className = "jackpotActiveWinner">{currentTime >= 9 ? percentage : "???"}</p>
 					</div>
                 	<div className="jackpotActiveWinningContainer">

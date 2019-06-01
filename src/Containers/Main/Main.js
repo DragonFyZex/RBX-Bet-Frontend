@@ -23,7 +23,7 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1}}>
+            <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1, height: '87%'}}>
                 <div className = "mainContainer">
                     <Jackpot data = {this.state.response}/>
                     {!isMobile ?
