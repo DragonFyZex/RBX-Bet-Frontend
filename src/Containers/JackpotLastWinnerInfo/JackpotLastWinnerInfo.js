@@ -26,7 +26,7 @@ export default ({lastRound = {winner: "none", numberOfTickets: 0, percentage: 0}
             </div>
             <div className = "jackpotLastWinnerBot">
                 <p>WIN: R${lastRound.numberOfTickets}</p>
-                <p>Chance: {(lastRound.percentage * 100).toFixed(2) }%</p>
+                <p>Chance: {(lastRound.winningStats.winnerPercentage * 100).toFixed(2) }%</p>
             </div>
         </div>
     )
