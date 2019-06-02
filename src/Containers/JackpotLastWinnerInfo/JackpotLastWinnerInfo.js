@@ -3,9 +3,8 @@ import axios from 'axios'
 
 import './JackpotLastWinnerInfo.css'
 
-export default ({lastRound = {winner: "none", numberOfTickets: 0, percentage: 0}}) => {
+export default ({lastRound = {winner: "none", numberOfTickets: 0, winningStats: {winnerPercentage: 0}}} ) => {
     const [username, setUsername] = useState("NONE")
-    
     useEffect(() => {
         (async () => {
             const usernameRequest = await axios.get(`https://yacdn.org/proxy/https://api.roblox.com/users/${lastRound.winner}`).catch("Error")
@@ -26,7 +25,11 @@ export default ({lastRound = {winner: "none", numberOfTickets: 0, percentage: 0}
             </div>
             <div className = "jackpotLastWinnerBot">
                 <p>WIN: R${lastRound.numberOfTickets}</p>
-                <p>Chance: {(lastRound.winningStats.winnerPercentage * 100).toFixed(2) }%</p>
+                {
+                    lastRound.winningStats != undefined ? 
+                    <p>Chance: {(lastRound.winningStats.winnerPercentage * 100).toFixed(2) }%</p> :
+                    <p>Chance: {0}%</p>
+                }
             </div>
         </div>
     )

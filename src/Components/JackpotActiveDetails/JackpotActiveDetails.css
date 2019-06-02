@@ -12,12 +12,13 @@
     align-self: flex-start;
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
     margin-top: 0%;
     margin-bottom: 0%;
     height: 19%;
-    width: 50%;
-
+    width: 75%;
+    text-align: left;
 }
 
 .jackpotActiveWinningLabel {
@@ -37,7 +38,7 @@
 .jackpotActiveWinner {
     font-family: "Basic";
     font-size: 1em;
-    margin-left: 2%;
+    margin-left: 1%;
     color: #FCFF58;
 }
 

@@ -17,18 +17,19 @@ export default class extends React.Component {
     componentDidMount = () => {
         const socket = io('https://api.rbx.bet');
         socket.on("getRound", data => this.setState({response: data}));
-      
+        
     }
 
 
     render() {
+        console.log(this.state.response)
         return (
             <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1, height: '87%'}}>
                 <div className = "mainContainer">
                     <Jackpot data = {this.state.response}/>
                     {!isMobile ?
                      <div className = "infoContainer">
-                        <JackpotLastWinnerInfo lastRound = {this.state.response ? this.state.response.lastRoundInfo : {winner: "none", numberOfTickets: 0, percentage: 0}} />
+                        <JackpotLastWinnerInfo lastRound = {this.state.response ? this.state.response.lastRoundInfo : {winner: "none", numberOfTickets: 0, winningStats:{winnerPercentage: 0}}} />
                         <JackpotParticipants data = {this.state.response}/>
                      </div> : 
                      null
