@@ -74,7 +74,7 @@ export default ({open, accept, cancel, userId}) => {
                                 const selectedItems = newPricedItems.filter(item => item.selected);
                                 const refreshedSmalls = sortedItems.filter((item) => item.price < 500).sort((a, b) => a - b)
                                 
-                                if (refreshedSmalls.length === 0) return;
+                                if (refreshedSmalls.length < 3) return;
                                 if (selectedItems.length === 0) return;
                                 accept(selectedItems, refreshedSmalls[0])
                             }}

@@ -30,10 +30,11 @@ export default windowSize(({id, price=2000000, windowWidth, windowHeight}) => {
     return (
         <div className = "jackpotItem" style={{boxShadow: `0px 3px 25px ${color}, 0px 4px 4px #00000040`,}}>
             <div style = 
-                {{height: "100px", width: "100px", 
+                {{height: "100%", width: "100%", 
                 backgroundImage: `url(https://www.roblox.com/Thumbs/Asset.ashx?format=png&width=420&height=230&assetId=${id})`, 
-                backgroundSize: windowWidth < 1024 && windowHeight < 800 ? "80%" : "17vh", 
-                backgroundPositionX: windowWidth < 1024 && windowHeight < 800 ? "30%" : "40%", 
+                backgroundSize: windowWidth < 1024 && windowHeight < 800 ? "80%" : "100%", 
+                backgroundPositionX: windowWidth < 1024 && windowHeight < 800 ? "30%" : "50%", 
+                backgroundPositionY: '50%',
                 alignSelf: "center",
                 marginTop: "1vh",
                 backgroundRepeat: "no-repeat"}} />
