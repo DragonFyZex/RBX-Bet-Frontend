@@ -19,7 +19,7 @@ export default  ({roundInfo}) => {
 	}, [roundInfo.round])
 
 	useEffect(() => {
-		if (transform == 0) {
+		if (itemReference.current != null && transform == 0) {
 			setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
 		}
 	}, [isReferenceSet])
