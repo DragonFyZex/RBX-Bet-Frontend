@@ -19,7 +19,9 @@ export default  ({roundInfo}) => {
 	}, [roundInfo.round])
 
 	useEffect(() => {
-		setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
+		if (transform == 0) {
+			setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
+		}
 	}, [isReferenceSet])
 
 	return (
@@ -31,11 +33,11 @@ export default  ({roundInfo}) => {
 						className="jackpotUserImage" 
 						ref={user.selected ? itemReference : null} 
 						onLoad={() => {
-							if (!isReferenceSet && user.selected) setIsReferenceSet(true)
+							if (!isReferenceSet && user.selected) {
+								setIsReferenceSet(true)
+							}
 						}}/>
-				)}
-			
-				
+				)}				
 			</div>
 		</div>
 	)
