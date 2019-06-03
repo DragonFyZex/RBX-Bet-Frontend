@@ -13,9 +13,7 @@ export default  ({roundInfo}) => {
 
 	useEffect(() => {
 		setJackpotItems(getJackpotItems(roundInfo));
-		if (transform === 0) {
-			setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
-		}
+		setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
 	}, [roundInfo.round])
 
 	return (
