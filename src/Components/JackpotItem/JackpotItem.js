@@ -32,7 +32,7 @@ export default windowSize(({id, price=2000000, windowWidth, windowHeight}) => {
             <div style = 
                 {{height: "100%", width: "100%", 
                 backgroundImage: `url(https://www.roblox.com/Thumbs/Asset.ashx?format=png&width=420&height=230&assetId=${id})`, 
-                backgroundSize: windowWidth < 1024 && windowHeight < 800 ? "80%" : "100%", 
+                backgroundSize: windowWidth < 1024 && windowHeight < 800 ? "80%" : "150%", 
                 backgroundPositionX: windowWidth < 1024 && windowHeight < 800 ? "30%" : "50%", 
                 backgroundPositionY: '50%',
                 alignSelf: "center",

@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useMemo, createRef} from 'react'
 import './JackpotRoulettePicker.css'
+import { isTemplateElement } from '@babel/types';
 
 
 
@@ -8,14 +9,18 @@ export default  ({roundInfo}) => {
 	const [listReference] = useState(createRef());
 	const [jackpotItems, setJackpotItems] = useState([])
 	const [isReferenceSet, setIsReferenceSet] = useState(false)
+	const [transform, setTransform] = useState(0)
 
 	useEffect(() => {
 		setJackpotItems(getJackpotItems(roundInfo));
+		if (transform === 0) {
+			setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
+		}
 	}, [roundInfo.round])
 
 	return (
 		<div className="jackpotPlayers">
-			<div className="jackpotPlayersList" ref = {listReference} style={jackpotItems.length && isReferenceSet > 0 ?{transform:`translate3d(-${itemReference.current.offsetLeft - listReference.current.offsetWidth / 2 + ((Math.random() * (0.2 - -0.2) -0.2) * (itemReference.current.offsetWidth/2)) }px, 0, 0)`} : {}}>
+			<div className="jackpotPlayersList" ref = {listReference} style={jackpotItems.length > 0 && isReferenceSet ? {transform:`translate3d(-${transform}px, 0, 0)`} : {}}>
 				{jackpotItems.map(user =>
 					<img src = {`https://www.roblox.com/headshot-thumbnail/image?userId=${user.userId}&width=420&height=420&format=png`} 
 						alt="" 
@@ -25,6 +30,7 @@ export default  ({roundInfo}) => {
 							if (!isReferenceSet) setIsReferenceSet(true)
 						}}/>
 				)}
+			
 				
 			</div>
 		</div>
