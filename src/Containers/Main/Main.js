@@ -16,8 +16,7 @@ export default class extends React.Component {
 
     componentDidMount = () => {
         const socket = io('https://api.rbx.bet', {
-            forceNew: true,
-            // transports: ['']
+            transports: ['websocket', 'polling'] 
         });
         socket.on("getRound", data => this.setState({response: data}));
       
