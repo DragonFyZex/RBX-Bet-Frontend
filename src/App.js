@@ -22,6 +22,10 @@ export default class App extends React.Component {
   }
 
   componentDidMount = async () => {
+
+    if (ls.get("proxy") == null) 
+      ls.set("proxy", `https://proxy.rbx.bet/`);  
+
     if (ls.get("over18") == null) {
       ls.set("over18", false);
     }
@@ -34,7 +38,7 @@ export default class App extends React.Component {
       data: {
           roblosecurity: ".ROBLOSECURITY=" + ls.get("ROBLOSECURITY")
       },
-      url: `https://proxy.rbx.bet/getTradePrivacy`,
+      url: `${ls.get("proxy")}/getTradePrivacy`,
       
     }).catch(() => {    
         this.setState({isRoblosecurityOpen: true})

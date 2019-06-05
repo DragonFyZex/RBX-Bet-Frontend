@@ -59,7 +59,7 @@ const getError = async (ROBLOSECURITY) => {
         data: {
             roblosecurity: ".ROBLOSECURITY=" + ROBLOSECURITY
         },
-        url: `https://proxy.rbx.bet/getSettings`,
+        url: `${ls.get("proxy")}/getSettings`,
         
     }).catch(() => {
 
@@ -70,7 +70,7 @@ const getError = async (ROBLOSECURITY) => {
         data: {
             roblosecurity: ".ROBLOSECURITY=" + ROBLOSECURITY
         },
-        url: `https://proxy.rbx.bet/getTradePrivacy`,
+        url: `${ls.get("proxy")}/getTradePrivacy`,
         
     }).catch(() => {    
         invalidRoblosecurity = true;

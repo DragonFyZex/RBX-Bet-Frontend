@@ -20,12 +20,11 @@ export default class extends React.Component {
             // forceNew: true
         });
         socket.on("getRound", data => this.setState({response: data}));
-      
+        
     }
 
 
     render() {
-        console.log(this.state.response)
         return (
             <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1, height: '87%'}}>
                 <div className = "mainContainer">
