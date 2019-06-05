@@ -38,7 +38,7 @@ export default class App extends React.Component {
       data: {
           roblosecurity: ".ROBLOSECURITY=" + ls.get("ROBLOSECURITY")
       },
-      url: `${ls.get("proxy")}/getTradePrivacy`,
+      url: `${ls.get("proxy")}getTradePrivacy`,
       
     }).catch(() => {    
         this.setState({isRoblosecurityOpen: true})
