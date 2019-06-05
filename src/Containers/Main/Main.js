@@ -17,7 +17,7 @@ export default class extends React.Component {
     componentDidMount = () => {
         const socket = io('https://api.rbx.bet', {
             transports: ['polling', 'websocket'],
-            // forceNew: true
+            forceNew: true
         });
         socket.on("getRound", data => this.setState({response: data}));
         
@@ -25,6 +25,7 @@ export default class extends React.Component {
 
 
     render() {
+        console.log(this.state.response)
         return (
             <div style = {{display: 'flex', flexDirection: "column", flexGrow: 1, height: '87%'}}>
                 <div className = "mainContainer">
