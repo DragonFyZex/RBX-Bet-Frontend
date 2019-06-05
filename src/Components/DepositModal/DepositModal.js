@@ -37,7 +37,7 @@ export default ({open, accept, cancel, userId}) => {
                         <div className="modalError">
                             {
                                 smalls.length == 0 ? "You need smalls (limiteds < R$500) to send a trade offer" :
-                                "You need 3 smalls minimum (6 or 7 recommended), if you don't have enough, the bot may not be able to send your winnings."
+                                "You need 2 smalls minimum (4 or 5 recommended), if you don't have enough, the bot may not be able to send your winnings."
                             }
                         </div> 
                     : null}
@@ -74,7 +74,7 @@ export default ({open, accept, cancel, userId}) => {
                                 const selectedItems = newPricedItems.filter(item => item.selected);
                                 const refreshedSmalls = sortedItems.filter((item) => item.price < 500).sort((a, b) => a - b)
                                 
-                                if (refreshedSmalls.length < 3) return;
+                                if (refreshedSmalls.length < 2) return;
                                 if (selectedItems.length === 0) return;
                                 accept(selectedItems, refreshedSmalls[0])
                             }}
