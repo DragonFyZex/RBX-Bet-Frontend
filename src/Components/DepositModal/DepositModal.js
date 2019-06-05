@@ -33,7 +33,7 @@ export default ({open, accept, cancel, userId}) => {
                     {/* <div className="modalInputContainer">
                         <input className="modalInput" placeholder={"Filter"} value = {filter} onChange={e => setFilter(e.target.value)}/>
                     </div> */}
-                    {smalls.length < 3 ?
+                    {smalls.length < 2 ?
                         <div className="modalError">
                             {
                                 smalls.length == 0 ? "You need smalls (limiteds < R$500) to send a trade offer" :
