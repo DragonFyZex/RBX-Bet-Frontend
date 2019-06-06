@@ -18,11 +18,15 @@ export default  ({roundInfo}) => {
 		}
 	}, [roundInfo.round])
 
-	useEffect(() => {
-		if (itemReference.current != null && transform == 0) {
-			setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
-		}
-	}, [isReferenceSet])
+	// useEffect(() => {
+	// 	if (itemReference.current != null && transform == 0) {
+	// 		setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
+	// 	}
+	// 	console.log(itemReference.current != null ? itemReference.current.offsetLeft : false);
+	// }, [isReferenceSet])
+	// console.log(roundInfo)
+	// console.log('refresh')
+	// console.log(itemReference.current != null ? itemReference.current.offsetLeft : false);
 
 	return (
 		<div className="jackpotPlayers">
@@ -35,6 +39,9 @@ export default  ({roundInfo}) => {
 						onLoad={() => {
 							if (!isReferenceSet && user.selected) {
 								setIsReferenceSet(true)
+								if (itemReference.current != null && transform == 0) {
+									setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
+								}
 							}
 						}}/>
 				)}				
