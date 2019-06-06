@@ -13,13 +13,30 @@ export default ({open, accept, cancel, userId}) => {
         if (items.length > 0) return
         (async () => {  
             const items = await axios.get(`https://yacdn.org/proxy/https://inventory.roblox.com/v1/users/${userId}/assets/collectibles?sortOrder=Asc&limit=100`)
-            const shrinkedItems = items.data.data.map(item => ({assetId: item.assetId, serialNumber: item.serialNumber == null ? "---" : item.serialNumber, UserAssetID: item.userAssetId, price: item.recentAveragePrice, selected: false}))
-            const sortedItems = shrinkedItems.sort((a, b) => b.price - a.price)
+            const shrinkedItems = await Promise.all(items.data.data.map(async item => {
+                        try {
+                            const valueRequest = await axios.get(`https://dev.rbxcity.com/api/Values/fetch-asset-value/${item.assetId}`);
+
+                            return {    
+                                assetId: item.assetId, 
+                                serialNumber: item.serialNumber == null ? "---" : item.serialNumber, 
+                                UserAssetID: item.userAssetId, 
+                                price: valueRequest.data.GeneralData[0].value, 
+                                selected: false
+                            }
+                        } catch (e) {
+                            return false
+                        }
+                    }
+                )
+            )
+            const filterFailedRequests = shrinkedItems.filter(item => item != false)
+            const sortedItems = filterFailedRequests.sort((a, b) => b.price - a.price)
             const filteredItems = sortedItems.filter((item) => item.price >= 500)
             setSmalls(sortedItems.filter((item) => item.price < 500).sort((a, b) => a - b))
             setItems(filteredItems)
         })()
-    });
+    }, [open]);
     
     
     return ( 
