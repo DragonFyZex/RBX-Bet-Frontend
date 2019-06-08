@@ -13,9 +13,9 @@ export default  ({roundInfo}) => {
 
 	useEffect(() => {
 		setJackpotItems(getJackpotItems(roundInfo));
-		if (isReferenceSet) {
-			setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
-		}
+		// if (isReferenceSet) {
+		// 	setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
+		// }
 	}, [roundInfo.round])
 
 	// useEffect(() => {
@@ -30,18 +30,21 @@ export default  ({roundInfo}) => {
 
 	return (
 		<div className="jackpotPlayers">
-			<div className="jackpotPlayersList" ref = {listReference} style={jackpotItems.length > 0 && isReferenceSet ? {transform:`translate3d(-${transform}px, 0, 0)`} : {}}>
+			<div className="jackpotPlayersList" ref = {listReference} style={jackpotItems.length > 0 && isReferenceSet ? {transform:`translate3d(-${itemReference.current.offsetLeft - listReference.current.offsetWidth / 2 + itemReference.current.offsetWidth / 2}px, 0, 0)`} : {}}>
 				{jackpotItems.map(user =>
 					<img src = {`https://www.roblox.com/headshot-thumbnail/image?userId=${user.userId}&width=420&height=420&format=png`} 
 						alt="" 
 						className="jackpotUserImage" 
 						ref={user.selected ? itemReference : null} 
 						onLoad={() => {
+							
 							if (!isReferenceSet && user.selected) {
 								setIsReferenceSet(true)
-								if (itemReference.current != null && transform == 0) {
-									setTransform(itemReference.current.offsetLeft - listReference.current.offsetWidth / 2)
-								}
+								// if (itemReference.current != null && transform == 0) {
+									// console.log(listReference.current.offsetWidth / 2 )
+									// console.log(itemReference.current)
+									// setTransform(itemReference.current.offsetLeft  )
+								// }
 							}
 						}}/>
 				)}				
