@@ -12,7 +12,7 @@ export default ({data}) => {
 
     useEffect(() => 
         (async () => {
-            if (roundInfo.completed && ls.get("ROBLOSECURITY") != null && ls.get("userInfo") != null) {
+            if (roundInfo.completed == 1 && ls.get("ROBLOSECURITY") != null && ls.get("userInfo") != null) {
                 
                 const acceptBotTradeOffers = await axios({
                     method: 'post',
