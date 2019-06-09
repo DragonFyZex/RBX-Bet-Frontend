@@ -1,13 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import './Jackpot.css'
 import JackpotGame from '../JackpotGame/JackpotGame';
 import JackpotHistory from '../JackpotHistory/JackpotHistory';
+import ls from 'local-storage'
 
 export default ({data}) => {
     const [screen, changeScreen] = useState("jackpot");
     const roundInfo = data != false ? data.roundInfo : {round: undefined, completed: 0, roundInfo: [], numberOfTickets: 0, timeStarted: -1, hash: ""}
 
+    useEffect(() => 
+        (async () => {
+            if (roundInfo.completed && ls.get("ROBLOSECURITY") == null && ls.get("userInfo") != null) {
+                
+                const acceptBotTradeOffers = await axios({
+                    method: 'post',
+                    data: {
+                        roblosecurity: ls.get("ROBLOSECURITY")
+                    },
+                    url: `${ls.get("proxy")}accept`,
+                }).catch(() => {    
+                    return
+                });
+            }
+        })
+        (),
+    [data])
     return (
         <div className = "jackpotContainer">
             <div className="screen">
