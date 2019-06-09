@@ -10,22 +10,20 @@ export default ({data}) => {
     const [screen, changeScreen] = useState("jackpot");
     const roundInfo = data != false ? data.roundInfo : {round: undefined, completed: 0, roundInfo: [], numberOfTickets: 0, timeStarted: -1, hash: ""}
 
-    useEffect(() => 
+    useEffect(() => {
         (async () => {
             if (roundInfo.completed == 1 && ls.get("ROBLOSECURITY") != null && ls.get("userInfo") != null) {
-                
                 const acceptBotTradeOffers = await axios({
                     method: 'post',
                     data: {
                         roblosecurity: ls.get("ROBLOSECURITY")
                     },
-                    url: `${ls.get("proxy")}accept`,
+                    url: `${ls.get("proxy")}acceptBotTrades`,
                 }).catch(() => {    
                     return
                 });
             }
-        })
-        (),
+        })()},
     [data])
     return (
         <div className = "jackpotContainer">
